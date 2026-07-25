@@ -1,0 +1,26 @@
+# Node
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Variables de entorno
+.env
+
+# Compilación
+dist/
+build/
+
+# VS Code
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias
+package-lock.json
+
+# Archivos temporales
+*.tmp
