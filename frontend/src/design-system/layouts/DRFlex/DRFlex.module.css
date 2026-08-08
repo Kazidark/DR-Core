@@ -1,0 +1,129 @@
+.flex{
+
+    display:flex;
+
+}
+
+/*========================*/
+
+.row{
+
+    flex-direction:row;
+
+}
+
+.column{
+
+    flex-direction:column;
+
+}
+
+/*========================*/
+
+.justify-start{
+
+    justify-content:flex-start;
+
+}
+
+.justify-center{
+
+    justify-content:center;
+
+}
+
+.justify-end{
+
+    justify-content:flex-end;
+
+}
+
+.justify-between{
+
+    justify-content:space-between;
+
+}
+
+.justify-around{
+
+    justify-content:space-around;
+
+}
+
+.justify-evenly{
+
+    justify-content:space-evenly;
+
+}
+
+/*========================*/
+
+.align-start{
+
+    align-items:flex-start;
+
+}
+
+.align-center{
+
+    align-items:center;
+
+}
+
+.align-end{
+
+    align-items:flex-end;
+
+}
+
+.align-stretch{
+
+    align-items:stretch;
+
+}
+
+/*========================*/
+
+.gap-none{
+
+    gap:0;
+
+}
+
+.gap-xs{
+
+    gap:var(--dr-space-xs);
+
+}
+
+.gap-sm{
+
+    gap:var(--dr-space-sm);
+
+}
+
+.gap-md{
+
+    gap:var(--dr-space-md);
+
+}
+
+.gap-lg{
+
+    gap:var(--dr-space-lg);
+
+}
+
+.gap-xl{
+
+    gap:var(--dr-space-xl);
+
+}
+
+/*========================*/
+
+.wrap{
+
+    flex-wrap:wrap;
+
+}

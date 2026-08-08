@@ -1,0 +1,39 @@
+.grid{
+
+    display:grid;
+
+    width:100%;
+
+}
+
+/*==========================*/
+
+.gap-none{
+
+    gap:0;
+
+}
+
+.gap-sm{
+
+    gap:var(--dr-space-sm);
+
+}
+
+.gap-md{
+
+    gap:var(--dr-space-md);
+
+}
+
+.gap-lg{
+
+    gap:var(--dr-space-lg);
+
+}
+
+.gap-xl{
+
+    gap:var(--dr-space-xl);
+
+}

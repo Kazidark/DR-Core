@@ -1,0 +1,146 @@
+.card{
+
+    border:none;
+
+    border-radius:22px;
+
+    min-height:170px;
+
+    background:#ffffff;
+
+    box-shadow:0 10px 24px rgba(15,23,42,.06);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 36px rgba(15,23,42,.10);
+
+}
+
+/* ====================================== */
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:22px;
+
+}
+
+/* ====================================== */
+
+.icon{
+
+    width:120px;
+
+    height:100px;
+
+    border-radius:24px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:all .25s ease;
+
+}
+.icon svg{
+
+    width:100px;
+
+    height:100px;
+
+}
+
+/* ===== Variantes ===== */
+
+.blue{
+
+    background:#EAF3FF;
+
+    color:#2563EB;
+
+}
+
+.green{
+
+    background:#ECFDF5;
+
+    color:#16A34A;
+
+}
+
+.purple{
+
+    background:#F3E8FF;
+
+    color:#9333EA;
+
+}
+
+.orange{
+
+    background:#FFF7ED;
+
+    color:#EA580C;
+
+}
+
+/* ====================================== */
+
+.card h2{
+
+    margin-top:6px;
+
+    margin-bottom:8px;
+
+    font-size:2rem;
+
+    line-height:1;
+
+}
+
+/* ====================================== */
+
+.trend{
+
+    margin-top:18px;
+
+    font-size:.80rem;
+
+    font-weight:600;
+
+}
+
+/* ====================================== */
+
+.up{
+
+    color:#16A34A;
+
+}
+
+.down{
+
+    color:#DC2626;
+
+}
+
+.neutral{
+
+    color:#64748B;
+
+}

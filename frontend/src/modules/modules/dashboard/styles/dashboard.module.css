@@ -1,0 +1,89 @@
+/* ==========================================================
+   DASHBOARD
+   ========================================================== */
+
+.dashboard {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 40px;
+
+    width: 100%;
+
+}
+
+/* ==========================================================
+   MÉTRICAS
+   ========================================================== */
+
+.metricsSection {
+
+    margin-top: 8px;
+
+}
+
+/* ==========================================================
+   FILA DE WIDGETS
+   ========================================================== */
+
+.widgetsRow {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 24px;
+
+    align-items: stretch;
+
+}
+
+/* ==========================================================
+   SEGUNDA FILA
+   ========================================================== */
+
+.widgetsRowTwo {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 24px;
+
+    align-items: stretch;
+
+}
+
+/* ==========================================================
+   TERCERA FILA
+   ========================================================== */
+
+.widgetsRowThree {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 1200px) {
+
+    .widgetsRow {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .widgetsRowTwo {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

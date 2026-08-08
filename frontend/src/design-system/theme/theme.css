@@ -1,0 +1,25 @@
+@import "./variables.css";
+@import "./light.css";
+@import "./dark.css";
+
+/* Fuente corporativa */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html,
+body,
+#root{
+
+    margin:0;
+
+    width:100%;
+
+    min-height:100vh;
+
+    font-family:var(--dr-font-family);
+
+    background:var(--dr-color-background);
+
+    color:var(--dr-color-text-primary);
+
+}

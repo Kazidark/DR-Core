@@ -1,0 +1,47 @@
+:root {
+  /* ===== Colores ===== */
+  --dr-color-background: #F5F7FA;
+  --dr-color-surface: #FFFFFF;
+  --dr-color-surface-secondary: #F9FAFB;
+
+  --dr-color-border: #E5E7EB;
+
+  --dr-color-text-primary: #111827;
+  --dr-color-text-secondary: #6B7280;
+
+  --dr-color-primary: #009688;
+  --dr-color-primary-hover: #00796B;
+
+  --dr-color-success: #16A34A;
+  --dr-color-warning: #F59E0B;
+  --dr-color-danger: #DC2626;
+  --dr-color-info: #2563EB;
+
+  /* ===== Espaciado ===== */
+  --dr-space-xs: 4px;
+  --dr-space-sm: 8px;
+  --dr-space-md: 16px;
+  --dr-space-lg: 24px;
+  --dr-space-xl: 32px;
+  --dr-space-xxl: 48px;
+
+  /* ===== Bordes ===== */
+  --dr-radius-sm: 6px;
+  --dr-radius-md: 10px;
+  --dr-radius-lg: 14px;
+  --dr-radius-xl: 18px;
+  --dr-radius-full: 9999px;
+
+  /* ===== Sombras ===== */
+  --dr-shadow-none: none;
+  --dr-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --dr-shadow-md: 0 4px 10px rgba(0, 0, 0, 0.10);
+  --dr-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+  /* ===== Tipografía ===== */
+  --dr-font-family: "Inter", sans-serif;
+
+  /* ===== Transiciones ===== */
+  --dr-transition-fast: 150ms ease-in-out;
+  --dr-transition-normal: 250ms ease-in-out;
+}

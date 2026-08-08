@@ -1,0 +1,51 @@
+.text{
+    margin:0;
+    padding:0;
+}
+
+.display{
+    font-size:48px;
+    font-weight:700;
+}
+
+.h1{
+    font-size:36px;
+    font-weight:700;
+}
+
+.h2{
+    font-size:30px;
+    font-weight:700;
+}
+
+.h3{
+    font-size:24px;
+    font-weight:600;
+}
+
+.title{
+    font-size:20px;
+    font-weight:600;
+}
+
+.subtitle{
+    font-size:18px;
+    font-weight:500;
+}
+
+.body{
+    font-size:16px;
+}
+
+.bodySmall{
+    font-size:14px;
+}
+
+.caption{
+    font-size:12px;
+}
+
+.label{
+    font-size:13px;
+    font-weight:500;
+}

@@ -1,0 +1,153 @@
+.card{
+
+    border:none;
+
+    border-radius:22px;
+
+    background:#ffffff;
+
+    box-shadow:0 10px 24px rgba(15,23,42,.06);
+
+    height:100%;
+
+}
+
+.score{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:28px 0;
+
+}
+
+.circle{
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+    conic-gradient(
+
+        #16A34A 0deg,
+
+        #16A34A 353deg,
+
+        #E5E7EB 353deg,
+
+        #E5E7EB 360deg
+
+    );
+
+    position:relative;
+
+}
+
+.circle::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    background:white;
+
+    border-radius:50%;
+
+}
+
+.circle span{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+}
+
+.green{
+
+    background:#16A34A;
+
+}
+
+.yellow{
+
+    background:#F59E0B;
+
+}
+
+.red{
+
+    background:#DC2626;
+
+}
+
+.blue{
+
+    background:#2563EB;
+
+}

@@ -1,0 +1,29 @@
+.page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+}
+
+.content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}

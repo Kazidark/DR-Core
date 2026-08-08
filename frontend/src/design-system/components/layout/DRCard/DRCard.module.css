@@ -1,0 +1,129 @@
+.card {
+  display: flex;
+  flex-direction: column;
+
+  background: var(--dr-color-surface);
+  border-radius: var(--dr-radius-lg);
+  border: 1px solid var(--dr-color-border);
+
+  transition:
+    transform var(--dr-transition-fast),
+    box-shadow var(--dr-transition-fast),
+    border-color var(--dr-transition-fast);
+
+  overflow: hidden;
+}
+
+/* ===========================
+   Variantes
+=========================== */
+
+.default {
+  background: var(--dr-color-surface);
+}
+
+.outlined {
+  background: var(--dr-color-surface);
+  border: 1px solid var(--dr-color-border);
+}
+
+.elevated {
+  background: var(--dr-color-surface);
+  box-shadow: var(--dr-shadow-md);
+}
+
+.flat {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* ===========================
+   Padding
+=========================== */
+
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: var(--dr-space-sm);
+}
+
+.padding-md {
+  padding: var(--dr-space-md);
+}
+
+.padding-lg {
+  padding: var(--dr-space-lg);
+}
+
+/* ===========================
+   Sombras
+=========================== */
+
+.shadow-none {
+  box-shadow: none;
+}
+
+.shadow-sm {
+  box-shadow: var(--dr-shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--dr-shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--dr-shadow-lg);
+}
+
+/* ===========================
+   Hover
+=========================== */
+
+.hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dr-shadow-lg);
+  border-color: var(--dr-color-primary);
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: var(--dr-space-lg);
+
+  border-bottom: 1px solid var(--dr-color-border);
+}
+
+/* ===========================
+   Content
+=========================== */
+
+.content {
+  flex: 1;
+  padding: var(--dr-space-lg);
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--dr-space-sm);
+
+  padding: var(--dr-space-lg);
+
+  border-top: 1px solid var(--dr-color-border);
+
+  background: var(--dr-color-surface-secondary);
+}
