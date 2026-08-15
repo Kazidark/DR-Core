@@ -1,0 +1,1742 @@
+.page {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    width: 100%;
+    min-width: 0;
+
+    height: calc(100dvh - 102px);
+    min-height: 0;
+
+    overflow: hidden;
+
+    --module-color: #0d9488;
+    --module-color-dark: #0f766e;
+    --module-color-soft: #f0fdfa;
+    --module-color-border: #99f6e4;
+    --module-color-shadow: rgba(13, 148, 136, 0.18);
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.toolbar {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+
+    border:
+        1px solid
+        #e6ebf1;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            15,
+            23,
+            42,
+            0.03
+        );
+}
+
+
+.searchContainer {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.search {
+    width:
+        min(
+            760px,
+            100%
+        );
+
+    min-height: 44px;
+
+    box-sizing: border-box;
+
+    padding:
+        0
+        15px;
+
+    border:
+        1px solid
+        #dbe3ec;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 0.86rem;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.search:hover {
+    background: #ffffff;
+}
+
+
+.search:focus {
+    border-color:
+        var(--module-color);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px
+        var(--module-color-shadow);
+}
+
+
+.search::placeholder {
+    color: #94a3b8;
+}
+
+
+.toolbarActions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+}
+
+
+/* =========================================================
+   BOTONES GENERALES
+   ========================================================= */
+
+.primaryButton,
+.secondaryButton,
+.editButton,
+.dangerButton {
+    min-height: 44px;
+
+    padding:
+        0
+        18px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 0.8rem;
+
+    font-weight: 650;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+.primaryButton {
+    border:
+        1px solid
+        var(--module-color);
+
+    background:
+        var(--module-color);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        var(--module-color-shadow);
+}
+
+
+.primaryButton:hover:not(:disabled) {
+    transform:
+        translateY(-1px);
+
+    border-color:
+        var(--module-color-dark);
+
+    background:
+        var(--module-color-dark);
+
+    box-shadow:
+        0 6px 14px
+        var(--module-color-shadow);
+}
+
+
+.editButton {
+    border:
+        1px solid
+        var(--module-color-border);
+
+    background:
+        var(--module-color-soft);
+
+    color:
+        var(--module-color-dark);
+
+    cursor: pointer;
+}
+
+
+.editButton:hover:not(:disabled) {
+    transform:
+        translateY(-1px);
+
+    border-color:
+        var(--module-color);
+
+    box-shadow:
+        0 4px 10px
+        var(--module-color-shadow);
+}
+
+
+.editButton:disabled {
+    border-color: #e2e8f0;
+
+    background: #f8fafc;
+
+    color: #94a3b8;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+
+.secondaryButton {
+    border:
+        1px solid
+        #e2e8f0;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    cursor: pointer;
+}
+
+
+.secondaryButton:hover {
+    border-color: #cbd5e1;
+
+    background: #f8fafc;
+}
+
+
+.dangerButton {
+    border:
+        1px solid
+        #fecaca;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+
+    cursor: pointer;
+}
+
+
+.dangerButton:hover:not(:disabled) {
+    transform:
+        translateY(-1px);
+
+    border-color:
+        #ef4444;
+
+    background:
+        #fee2e2;
+}
+
+
+.dangerButton:disabled,
+.primaryButton:disabled {
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   EXCEL
+   ========================================================= */
+
+.fileInput {
+    display: none;
+}
+
+
+.excelImportButton,
+.excelExportButton {
+    min-height: 44px;
+
+    padding:
+        0
+        17px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+.excelImportButton {
+    border:
+        1px solid
+        #86efac;
+
+    background: #f0fdf4;
+
+    color: #15803d;
+}
+
+
+.excelImportButton:hover:not(:disabled) {
+    transform:
+        translateY(-1px);
+
+    border-color: #22c55e;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    box-shadow:
+        0 4px 10px
+        rgba(
+            34,
+            197,
+            94,
+            0.16
+        );
+}
+
+
+.excelExportButton {
+    border:
+        1px solid
+        #15803d;
+
+    background:
+        linear-gradient(
+            135deg,
+            #15803d,
+            #16a34a
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 10px
+        rgba(
+            21,
+            128,
+            61,
+            0.18
+        );
+}
+
+
+.excelExportButton:hover:not(:disabled) {
+    transform:
+        translateY(-1px);
+
+    border-color: #166534;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    box-shadow:
+        0 6px 14px
+        rgba(
+            21,
+            128,
+            61,
+            0.22
+        );
+}
+
+
+.excelImportButton:disabled,
+.excelExportButton:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   FEEDBACK EXCEL
+   ========================================================= */
+
+.excelFeedback {
+    padding:
+        13px
+        15px;
+
+    border: 1px solid;
+
+    border-radius: 12px;
+
+    font-size: 0.8rem;
+
+    box-shadow:
+        0 3px 10px
+        rgba(
+            15,
+            23,
+            42,
+            0.035
+        );
+}
+
+
+.excelFeedbackSuccess {
+    border-color: #bbf7d0;
+
+    background: #f0fdf4;
+
+    color: #166534;
+}
+
+
+.excelFeedbackWarning {
+    border-color: #fde68a;
+
+    background: #fffbeb;
+
+    color: #92400e;
+}
+
+
+.excelFeedbackError {
+    border-color: #fecaca;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+}
+
+
+.excelFeedbackHeader {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 14px;
+}
+
+
+.excelFeedbackClose {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    flex-shrink: 0;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: currentColor;
+
+    cursor: pointer;
+
+    font-size: 1.15rem;
+}
+
+
+.excelFeedbackClose:hover {
+    background:
+        rgba(
+            15,
+            23,
+            42,
+            0.06
+        );
+}
+
+
+.excelFeedbackDetails {
+    display: grid;
+
+    gap: 4px;
+
+    margin:
+        10px 0 0;
+
+    padding-left: 20px;
+}
+
+
+/* =========================================================
+   MENSAJES
+   ========================================================= */
+
+.error,
+.success {
+    padding:
+        13px
+        15px;
+
+    border-radius: 11px;
+
+    font-size: 0.82rem;
+
+    line-height: 1.5;
+}
+
+
+.error {
+    border:
+        1px solid
+        #fecaca;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+
+    white-space: pre-line;
+}
+
+
+.success {
+    border:
+        1px solid
+        #bbf7d0;
+
+    background: #f0fdf4;
+
+    color: #166534;
+}
+
+
+/* =========================================================
+   FORMULARIO
+   ========================================================= */
+
+.formHeader {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+
+.formDescription {
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-size: 0.8rem;
+}
+
+
+.form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 18px;
+}
+
+
+.field {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 7px;
+
+    color: #475569;
+
+    font-size: 0.79rem;
+
+    font-weight: 600;
+}
+
+
+.field > span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.field input,
+.field select {
+    width: 100%;
+
+    min-height: 43px;
+
+    box-sizing: border-box;
+
+    padding:
+        0
+        12px;
+
+    border:
+        1px solid
+        #dbe3ec;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 0.84rem;
+}
+
+
+.field input:focus,
+.field select:focus {
+    border-color:
+        var(--module-color);
+
+    box-shadow:
+        0 0 0 3px
+        var(--module-color-shadow);
+}
+
+
+.formActions {
+    grid-column:
+        1 / -1;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding-top: 8px;
+}
+
+
+/* =========================================================
+   TABLA
+   ========================================================= */
+
+.tableSection {
+    position: relative;
+
+    display: flex;
+
+    flex:
+        1 1 auto;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--module-color-border);
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            15,
+            23,
+            42,
+            0.065
+        );
+}
+
+
+.tableSection::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    z-index: 2;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--module-color),
+            var(--module-color-border)
+        );
+}
+
+
+/* =========================================================
+   CABECERA DE TABLA
+   ========================================================= */
+
+.tableHeader {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 78px;
+
+    box-sizing: border-box;
+
+    padding:
+        18px
+        22px
+        15px;
+
+    border-bottom:
+        1px solid
+        #e7edf3;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--module-color-soft)
+                0%,
+            #ffffff
+                58%
+        );
+}
+
+
+.tableTitleGroup {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+}
+
+
+.tableHeaderActions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.readOnlyBadge {
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 30px;
+
+    padding:
+        0
+        11px;
+
+    border:
+        1px solid
+        #dbeafe;
+
+    border-radius: 999px;
+
+    background:
+        #eff6ff;
+
+    color:
+        #1d4ed8;
+
+    font-size: 0.7rem;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   LIMPIAR ORDEN
+   ========================================================= */
+
+.clearSortButton {
+    min-height: 35px;
+
+    padding:
+        0
+        13px;
+
+    border:
+        1px solid
+        var(--module-color-border);
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color:
+        var(--module-color-dark);
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 0.74rem;
+
+    font-weight: 650;
+
+    box-shadow:
+        0 2px 7px
+        rgba(
+            15,
+            23,
+            42,
+            0.04
+        );
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.clearSortButton:hover {
+    border-color:
+        var(--module-color);
+
+    background:
+        var(--module-color-soft);
+
+    color:
+        var(--module-color);
+
+    box-shadow:
+        0 4px 10px
+        var(--module-color-shadow);
+}
+
+
+/* =========================================================
+   VIEWPORT DATAGRID
+   ========================================================= */
+
+.dataGridViewport {
+    flex:
+        1 1 auto;
+
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    height: 0;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #fbfcfe 100%
+        );
+}
+
+
+/* =========================================================
+   DATAGRID
+   ========================================================= */
+
+.dataGrid {
+    width: 100%;
+
+    border: none !important;
+
+    border-radius:
+        0 !important;
+
+    background: transparent;
+
+    color: #334155;
+
+    font-family:
+        inherit !important;
+
+    font-size:
+        0.81rem;
+}
+
+
+/* =========================================================
+   CABECERAS MUI
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-columnHeaders) {
+    border-bottom:
+        1px solid
+        var(--module-color-border) !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--module-color-soft)
+                0%,
+            #f8fafc
+                100%
+        ) !important;
+
+    box-shadow:
+        0 3px 10px
+        rgba(
+            15,
+            23,
+            42,
+            0.055
+        );
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-columnHeader) {
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--module-color-soft)
+                0%,
+            #f8fafc
+                100%
+        ) !important;
+
+    color:
+        var(--module-color-dark);
+
+    font-size:
+        0.69rem;
+
+    font-weight: 750;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.035em;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-columnHeader:first-of-type) {
+    box-shadow:
+        inset
+        4px
+        0
+        0
+        var(--module-color);
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-columnHeaderTitle) {
+    font-weight:
+        750 !important;
+
+    overflow: hidden;
+
+    text-overflow:
+        ellipsis;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-columnSeparator) {
+    color:
+        var(--module-color-border) !important;
+
+    opacity:
+        0.9 !important;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-sortIcon) {
+    color:
+        var(--module-color) !important;
+
+    opacity:
+        1 !important;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-iconButtonContainer) {
+    visibility:
+        visible !important;
+}
+
+
+/* =========================================================
+   CELDAS
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-cell) {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        0
+        16px !important;
+
+    border-bottom:
+        1px solid
+        #edf1f5 !important;
+
+    border-right:
+        1px solid
+        rgba(
+            226,
+            232,
+            240,
+            0.66
+        ) !important;
+
+    color: #334155;
+
+    outline: none !important;
+
+    transition:
+        background-color
+        0.15s ease,
+        color
+        0.15s ease,
+        border-color
+        0.15s ease;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-cell:last-of-type) {
+    border-right:
+        none !important;
+}
+
+
+.gridCellValue {
+    display: block;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   FILAS
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-row) {
+    background:
+        #ffffff;
+
+    transition:
+        background-color
+        0.15s ease,
+        box-shadow
+        0.15s ease;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-row:nth-of-type(even)) {
+    background:
+        #fbfdff;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-row:hover) {
+    background:
+        var(--module-color-soft) !important;
+
+    box-shadow:
+        inset
+        3px
+        0
+        0
+        var(--module-color);
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-row.Mui-selected) {
+    background:
+        var(--module-color-soft) !important;
+
+    box-shadow:
+        inset
+        5px
+        0
+        0
+        var(--module-color);
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-row.Mui-selected:hover) {
+    background:
+        var(--module-color-soft) !important;
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 72px;
+
+    min-height: 26px;
+
+    box-sizing: border-box;
+
+    padding:
+        0
+        9px;
+
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+}
+
+
+.badgeForti {
+    border:
+        1px solid
+        #99f6e4;
+
+    background:
+        #f0fdfa;
+
+    color:
+        #0f766e;
+}
+
+
+.badgeWeb {
+    border:
+        1px solid
+        #bfdbfe;
+
+    background:
+        #eff6ff;
+
+    color:
+        #1d4ed8;
+}
+
+
+.badgeAssigned {
+    border:
+        1px solid
+        #bbf7d0;
+
+    background:
+        #f0fdf4;
+
+    color:
+        #15803d;
+}
+
+
+.badgeReserve {
+    border:
+        1px solid
+        #fde68a;
+
+    background:
+        #fffbeb;
+
+    color:
+        #b45309;
+}
+
+
+.badgeActive {
+    border:
+        1px solid
+        #bbf7d0;
+
+    background:
+        #f0fdf4;
+
+    color:
+        #15803d;
+}
+
+
+.badgeInactive {
+    border:
+        1px solid
+        #fecaca;
+
+    background:
+        #fef2f2;
+
+    color:
+        #b91c1c;
+}
+
+
+/* =========================================================
+   SWITCH FORTI
+   ========================================================= */
+
+.fortiToggle {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 32px;
+
+    padding:
+        3px
+        9px
+        3px
+        5px;
+
+    border-radius:
+        999px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        background-color
+        0.18s ease,
+        border-color
+        0.18s ease,
+        color
+        0.18s ease,
+        box-shadow
+        0.18s ease,
+        opacity
+        0.18s ease;
+}
+
+
+.fortiToggleTrack {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    width: 31px;
+
+    height: 18px;
+
+    flex-shrink: 0;
+
+    border-radius:
+        999px;
+
+    transition:
+        background-color
+        0.18s ease;
+}
+
+
+.fortiToggleKnob {
+    position: absolute;
+
+    top: 3px;
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius:
+        50%;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 1px 4px
+        rgba(
+            15,
+            23,
+            42,
+            0.25
+        );
+
+    transition:
+        transform
+        0.18s ease;
+}
+
+
+.fortiToggleActive {
+    border:
+        1px solid
+        #86efac;
+
+    background:
+        #f0fdf4;
+
+    color:
+        #15803d;
+}
+
+
+.fortiToggleActive
+.fortiToggleTrack {
+    background:
+        #22c55e;
+}
+
+
+.fortiToggleActive
+.fortiToggleKnob {
+    transform:
+        translateX(
+            16px
+        );
+}
+
+
+.fortiToggleInactive {
+    border:
+        1px solid
+        #fecaca;
+
+    background:
+        #fef2f2;
+
+    color:
+        #b91c1c;
+}
+
+
+.fortiToggleInactive
+.fortiToggleTrack {
+    background:
+        #cbd5e1;
+}
+
+
+.fortiToggleInactive
+.fortiToggleKnob {
+    transform:
+        translateX(
+            3px
+        );
+}
+
+
+.fortiToggle:hover:not(:disabled) {
+    box-shadow:
+        0 3px 9px
+        rgba(
+            15,
+            23,
+            42,
+            0.09
+        );
+}
+
+
+.fortiToggle:disabled {
+    cursor:
+        wait;
+
+    opacity:
+        0.6;
+}
+
+
+.fortiToggleLoading {
+    opacity:
+        0.65;
+}
+
+
+.fortiToggleText {
+    min-width: 72px;
+
+    text-align: left;
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        750;
+}
+
+
+/* =========================================================
+   SCROLL
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-scrollbar) {
+    scrollbar-width:
+        thin;
+
+    scrollbar-color:
+        #cbd5e1
+        transparent;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-scrollbar::-webkit-scrollbar) {
+    width: 8px;
+
+    height: 8px;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-scrollbar::-webkit-scrollbar-thumb) {
+    border-radius:
+        999px;
+
+    background:
+        #cbd5e1;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-scrollbar::-webkit-scrollbar-thumb:hover) {
+    background:
+        var(--module-color);
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-overlay) {
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        0.84rem;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-footerContainer) {
+    min-height:
+        50px !important;
+
+    border-top:
+        1px solid
+        #e5eaf0 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fafc
+        );
+}
+
+
+.dataGrid
+:global(.MuiTablePagination-root) {
+    color: #64748b;
+
+    font-family: inherit;
+}
+
+
+.dataGrid
+:global(.MuiTablePagination-selectLabel),
+.dataGrid
+:global(.MuiTablePagination-displayedRows) {
+    font-size:
+        0.76rem;
+}
+
+
+.dataGrid
+:global(.MuiTablePagination-actions button) {
+    color:
+        var(--module-color);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.dataGrid
+:global(.MuiDataGrid-cell:focus),
+.dataGrid
+:global(.MuiDataGrid-columnHeader:focus) {
+    outline:
+        none !important;
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-cell:focus-within),
+.dataGrid
+:global(.MuiDataGrid-columnHeader:focus-within) {
+    outline:
+        2px solid
+        var(--module-color-border) !important;
+
+    outline-offset:
+        -2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (
+    max-width: 1100px
+) {
+
+    .form {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+}
+
+
+@media (
+    max-width: 900px
+) {
+
+    .toolbar {
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .toolbarActions {
+        width:
+            100%;
+
+        justify-content:
+            flex-start;
+    }
+
+
+    .search {
+        width:
+            100%;
+    }
+
+
+    .tableHeader {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .tableHeaderActions {
+        width: 100%;
+
+        justify-content:
+            space-between;
+    }
+
+}
+
+
+@media (
+    max-width: 620px
+) {
+
+    .form {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .toolbarActions {
+        display: grid;
+
+        grid-template-columns:
+            1fr;
+
+        width: 100%;
+    }
+
+
+    .toolbarActions button {
+        width: 100%;
+    }
+
+
+    .formActions {
+        flex-direction:
+            column-reverse;
+    }
+
+}

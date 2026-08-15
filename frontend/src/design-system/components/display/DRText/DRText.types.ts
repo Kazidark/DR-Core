@@ -1,96 +1,107 @@
-import { CSSProperties, ReactNode } from "react";
+import type {
+    CSSProperties,
+    ReactNode,
+} from "react";
+
 
 export type DRTextElement =
-  | "span"
-  | "p"
-  | "label"
-  | "strong"
-  | "small"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6";
+    | "span"
+    | "p"
+    | "label"
+    | "strong"
+    | "small"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6";
+
 
 export type DRTextVariant =
-  | "display"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "title"
-  | "subtitle"
-  | "body"
-  | "bodySmall"
-  | "caption"
-  | "label";
+    | "display"
+    | "h1"
+    | "h2"
+    | "h3"
+    | "title"
+    | "subtitle"
+    | "body"
+    | "bodySmall"
+    | "caption"
+    | "label";
+
 
 export type DRTextWeight =
-  | "regular"
-  | "medium"
-  | "semibold"
-  | "bold";
+    | "regular"
+    | "medium"
+    | "semibold"
+    | "bold";
+
 
 export type DRTextAlign =
-  | "left"
-  | "center"
-  | "right"
-  | "justify";
+    | "left"
+    | "center"
+    | "right"
+    | "justify";
+
 
 export type DRTextColor =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "danger"
-  | "info";
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info";
+
 
 export interface DRTextProps {
-  children: ReactNode;
 
-  /**
-   * Etiqueta HTML que renderizará el componente.
-   * Por defecto utiliza <span>.
-   */
-  as?: DRTextElement;
+    children: ReactNode;
 
-  /**
-   * Variante tipográfica.
-   */
-  variant?: DRTextVariant;
+    /**
+     * Etiqueta HTML que renderizará
+     * el componente.
+     */
+    as?: DRTextElement;
 
-  /**
-   * Peso de la fuente.
-   */
-  weight?: DRTextWeight;
+    /**
+     * Variante tipográfica.
+     */
+    variant?: DRTextVariant;
 
-  /**
-   * Color del texto.
-   */
-  color?: DRTextColor;
+    /**
+     * Peso de la fuente.
+     */
+    weight?: DRTextWeight;
 
-  /**
-   * Alineación.
-   */
-  align?: DRTextAlign;
+    /**
+     * Color del texto.
+     */
+    color?: DRTextColor;
 
-  /**
-   * Clase adicional.
-   */
-  className?: string;
+    /**
+     * Alineación.
+     */
+    align?: DRTextAlign;
 
-  /**
-   * Estilos inline.
-   */
-  style?: CSSProperties;
+    /**
+     * Clase adicional.
+     */
+    className?: string;
 
-  /**
-   * Identificador HTML.
-   */
-  id?: string;
+    /**
+     * Estilos inline.
+     */
+    style?: CSSProperties;
 
-  /**
-   * Recorta el texto cuando no entra.
-   */
-  truncate?: boolean;
+    /**
+     * Identificador HTML.
+     */
+    id?: string;
+
+    /**
+     * Recorta el texto
+     * cuando no entra.
+     */
+    truncate?: boolean;
 }

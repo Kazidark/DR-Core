@@ -1,5 +1,8 @@
 import styles from "./DashboardHero.module.css";
-import type { DashboardHeroProps } from "./DashboardHero.types";
+
+import type {
+  DashboardHeroProps,
+} from "./DashboardHero.types";
 
 import {
   DRCard,
@@ -8,36 +11,84 @@ import {
   DRIcon,
 } from "@/design-system";
 
+import {
+  useAuth,
+} from "@/auth";
+
+
 export default function DashboardHero({
-  userName = "Jean",
-  greeting = "Buenos días",
+  userName,
+  greeting = "Bienvenido(a)",
   lastSync = "Hace 5 minutos",
   className = "",
   style,
   id,
 }: DashboardHeroProps) {
+
+  const {
+    usuario,
+  } = useAuth();
+
+
+  /* =========================================================
+     NOMBRE DEL USUARIO AUTENTICADO
+     ========================================================= */
+
+  const primerNombre =
+    usuario?.nombres
+      ?.trim()
+      .split(/\s+/)[0] ??
+    "Usuario";
+
+
+  /*
+   * Si en algún momento DashboardHero recibe
+   * explícitamente la propiedad userName,
+   * respetamos ese valor.
+   *
+   * En caso contrario usamos automáticamente
+   * el primer nombre del usuario autenticado.
+   */
+  const nombreMostrar =
+    userName?.trim() ||
+    primerNombre;
+
+
   return (
+
     <DRCard
       id={id}
       style={style}
       className={`${styles.hero} ${className}`}
       variant="elevated"
     >
+
       <DRCardContent>
 
-        <div className={styles.container}>
+        <div
+          className={
+            styles.container
+          }
+        >
 
-          {/* IZQUIERDA */}
+          {/* =================================================
+              IZQUIERDA
+              ================================================= */}
 
-          <div className={styles.left}>
+          <div
+            className={
+              styles.left
+            }
+          >
 
             <DRText
               as="h1"
               variant="h1"
               weight="bold"
             >
-              👋 {greeting}, {userName}
+              👋 {greeting}, {nombreMostrar}
             </DRText>
+
 
             <DRText
               variant="body"
@@ -48,15 +99,35 @@ export default function DashboardHero({
 
           </div>
 
-          {/* CENTRO */}
 
-          <div className={styles.center}>
+          {/* =================================================
+              CENTRO
+              ================================================= */}
 
-            <div className={styles.circle}></div>
+          <div
+            className={
+              styles.center
+            }
+          >
 
-            <div className={styles.illustration}>
+            <div
+              className={
+                styles.circle
+              }
+            />
 
-              <div className={styles.server}>
+
+            <div
+              className={
+                styles.illustration
+              }
+            >
+
+              <div
+                className={
+                  styles.server
+                }
+              >
 
                 <DRIcon
                   name="server"
@@ -65,7 +136,12 @@ export default function DashboardHero({
 
               </div>
 
-              <div className={styles.shield}>
+
+              <div
+                className={
+                  styles.shield
+                }
+              >
 
                 <DRIcon
                   name="shield"
@@ -78,9 +154,16 @@ export default function DashboardHero({
 
           </div>
 
-          {/* DERECHA */}
 
-          <div className={styles.right}>
+          {/* =================================================
+              DERECHA
+              ================================================= */}
+
+          <div
+            className={
+              styles.right
+            }
+          >
 
             <DRText
               variant="caption"
@@ -88,6 +171,7 @@ export default function DashboardHero({
             >
               Última sincronización
             </DRText>
+
 
             <DRText
               variant="bodySmall"
@@ -101,6 +185,9 @@ export default function DashboardHero({
         </div>
 
       </DRCardContent>
+
     </DRCard>
+
   );
+
 }

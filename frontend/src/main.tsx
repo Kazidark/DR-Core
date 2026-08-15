@@ -1,22 +1,55 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import {
+    StrictMode,
+} from "react";
 
-import "./index.css";
+import {
+    createRoot,
+} from "react-dom/client";
+
+import {
+    BrowserRouter,
+} from "react-router-dom";
+
+import {
+    AuthProvider,
+} from "@/auth";
 
 import App from "./App";
 
-import { DRThemeProvider } from "@/design-system";
+import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
+
+const rootElement =
+    document.getElementById(
+        "root",
+    );
+
+
+if (!rootElement) {
+
+    throw new Error(
+        'No se encontró el elemento con id="root".',
+    );
+
+}
+
+
+createRoot(
+    rootElement,
+).render(
 
     <StrictMode>
 
-        <DRThemeProvider>
+        <BrowserRouter>
 
-            <App/>
+            <AuthProvider>
 
-        </DRThemeProvider>
+                <App />
 
-    </StrictMode>
+            </AuthProvider>
+
+        </BrowserRouter>
+
+    </StrictMode>,
 
 );

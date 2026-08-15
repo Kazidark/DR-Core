@@ -1,0 +1,113 @@
+import {
+  Module,
+} from '@nestjs/common';
+
+import {
+  ConfigService,
+} from '@nestjs/config';
+
+import {
+  JwtModule,
+} from '@nestjs/jwt';
+
+import {
+  PassportModule,
+} from '@nestjs/passport';
+
+import {
+  TypeOrmModule,
+} from '@nestjs/typeorm';
+
+import {
+  MailModule,
+} from '../mail/mail.module';
+
+import {
+  UsuarioCredencial,
+  UsuarioSistema,
+} from '../usuarios/usuarios.entity';
+
+import {
+  AuthController,
+} from './auth.controller';
+
+import {
+  AuthService,
+} from './auth.service';
+
+import {
+  JwtAuthGuard,
+} from './jwt-auth.guard';
+
+import {
+  JwtStrategy,
+} from './jwt.strategy';
+
+import {
+  PasswordResetToken,
+} from './password-reset-token.entity';
+
+import {
+  RolesGuard,
+} from './roles.guard';
+
+
+@Module({
+  imports: [
+
+    TypeOrmModule.forFeature([
+      UsuarioSistema,
+      UsuarioCredencial,
+      PasswordResetToken,
+    ]),
+
+    PassportModule,
+
+    MailModule,
+
+    JwtModule.registerAsync({
+      inject: [
+        ConfigService,
+      ],
+
+      useFactory: (
+        config:
+          ConfigService,
+      ) => ({
+        secret:
+          config
+            .getOrThrow<string>(
+              'JWT_SECRET',
+            ),
+
+        signOptions: {
+          /*
+           * 8 horas.
+           */
+          expiresIn:
+            8 * 60 * 60,
+        },
+      }),
+    }),
+  ],
+
+
+  controllers: [
+    AuthController,
+  ],
+
+
+  providers: [
+    AuthService,
+    JwtStrategy,
+    JwtAuthGuard,
+    RolesGuard,
+  ],
+
+
+  exports: [
+    JwtAuthGuard,
+    RolesGuard,
+  ],
+})
+export class AuthModule {}

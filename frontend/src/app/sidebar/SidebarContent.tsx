@@ -1,33 +1,347 @@
-import { Box, Text } from "@/design-system";
+import {
+    NavLink,
+} from "react-router-dom";
 
-export function SidebarContent() {
+import {
+    useAuth,
+} from "@/auth";
 
-  return (
+import type {
+    RolUsuario,
+} from "@/auth";
 
-    <Box
-      style={{
-        padding: "16px",
-      }}
-    >
+import styles from "./Sidebar.module.css";
 
-      <Text variant="body">
-        Dashboard
-      </Text>
 
-      <Text variant="body">
-        Inventario
-      </Text>
+type SidebarContentProps = {
+    collapsed:
+        boolean;
+};
 
-      <Text variant="body">
-        VPN
-      </Text>
 
-      <Text variant="body">
-        Correos
-      </Text>
+type MenuItem = {
+    label:
+        string;
 
-    </Box>
+    shortLabel:
+        string;
 
-  );
+    path:
+        string;
+
+    roles:
+        RolUsuario[];
+};
+
+
+const menuItems:
+    MenuItem[] = [
+
+    {
+        label:
+            "Dashboard",
+
+        shortLabel:
+            "DB",
+
+        path:
+            "/dashboard",
+
+        roles: [
+            "Administrador",
+            "Consultor",
+        ],
+    },
+
+    {
+        label:
+            "Inventario",
+
+        shortLabel:
+            "IN",
+
+        path:
+            "/inventario",
+
+        roles: [
+            "Administrador",
+            "Consultor",
+        ],
+    },
+
+    {
+        label:
+            "VPN",
+
+        shortLabel:
+            "VP",
+
+        path:
+            "/vpn",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+    {
+        label:
+            "Correos",
+
+        shortLabel:
+            "CO",
+
+        path:
+            "/correos",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+    {
+        label:
+            "IP",
+
+        shortLabel:
+            "IP",
+
+        path:
+            "/ip",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+    {
+        label:
+            "Impresoras",
+
+        shortLabel:
+            "IM",
+
+        path:
+            "/impresoras",
+
+        roles: [
+            "Administrador",
+            "Consultor",
+        ],
+    },
+
+    {
+        label:
+            "Servidores",
+
+        shortLabel:
+            "SV",
+
+        path:
+            "/servidores",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+    {
+        label:
+            "Switch",
+
+        shortLabel:
+            "SW",
+
+        path:
+            "/switch",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+    {
+        label:
+            "Usuarios",
+
+        shortLabel:
+            "US",
+
+        path:
+            "/usuarios",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+];
+
+
+export function SidebarContent({
+    collapsed,
+}: SidebarContentProps) {
+
+    const {
+        usuario,
+        logout,
+    } =
+        useAuth();
+
+
+    const visibles =
+        menuItems.filter(
+            (
+                item,
+            ) =>
+                usuario !==
+                    null &&
+                item.roles.includes(
+                    usuario.rol,
+                ),
+        );
+
+
+    return (
+
+        <nav
+            className={[
+                styles.menu,
+
+                collapsed
+                    ? styles.menuCollapsed
+                    : "",
+
+            ].join(
+                " ",
+            )}
+        >
+
+            <div
+                className={
+                    styles.menuItems
+                }
+            >
+
+                {visibles.map(
+                    (
+                        item,
+                    ) => (
+
+                        <NavLink
+                            key={
+                                item.path
+                            }
+
+                            to={
+                                item.path
+                            }
+
+                            end
+
+                            title={
+                                collapsed
+                                    ? item.label
+                                    : undefined
+                            }
+
+                            className={({
+                                isActive,
+                            }) =>
+                                [
+                                    styles.menuLink,
+
+                                    isActive
+                                        ? styles.menuLinkActive
+                                        : "",
+
+                                    collapsed
+                                        ? styles.menuLinkCollapsed
+                                        : "",
+
+                                ].join(
+                                    " ",
+                                )
+                            }
+                        >
+
+                            <span
+                                className={
+                                    styles.menuIcon
+                                }
+                            >
+                                {
+                                    item.shortLabel
+                                }
+                            </span>
+
+
+                            {!collapsed && (
+
+                                <span
+                                    className={
+                                        styles.menuLabel
+                                    }
+                                >
+                                    {
+                                        item.label
+                                    }
+                                </span>
+
+                            )}
+
+                        </NavLink>
+
+                    ),
+                )}
+
+            </div>
+
+
+            <button
+                type="button"
+
+                className={[
+                    styles.logoutButton,
+
+                    collapsed
+                        ? styles.logoutButtonCollapsed
+                        : "",
+
+                ].join(
+                    " ",
+                )}
+
+                onClick={
+                    logout
+                }
+
+                title={
+                    collapsed
+                        ? "Cerrar sesión"
+                        : undefined
+                }
+            >
+
+                <span
+                    className={
+                        styles.logoutIcon
+                    }
+                >
+                    ↪
+                </span>
+
+
+                {!collapsed && (
+                    <span>
+                        Cerrar sesión
+                    </span>
+                )}
+
+            </button>
+
+        </nav>
+
+    );
 
 }

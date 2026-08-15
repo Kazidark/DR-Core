@@ -1,55 +1,64 @@
 import styles from "./DRGrid.module.css";
 
-import type { DRGridProps } from "./DRGrid.types";
+import type {
+    DRGridProps,
+} from "./DRGrid.types";
+
 
 export default function DRGrid({
 
-  children,
+    children,
 
-  columns = 4,
+    gap = "lg",
 
-  gap = "lg",
+    minItemWidth = 280,
 
-  minItemWidth = 280,
+    className = "",
 
-  className = "",
+    style,
 
-  style,
-
-  id,
+    id,
 
 }: DRGridProps) {
 
-  return (
+    return (
 
-    <div
+        <div
 
-      id={id}
+            id={
+                id
+            }
 
-      className={[
-        styles.grid,
-        styles[`gap-${gap}`],
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
+            className={[
+                styles.grid,
+                styles[
+                    `gap-${gap}`
+                ],
+                className,
+            ]
+                .filter(
+                    Boolean,
+                )
+                .join(
+                    " ",
+                )}
 
-      style={{
+            style={{
 
-        gridTemplateColumns:
+                gridTemplateColumns:
+                    `repeat(auto-fit, minmax(${minItemWidth}px, 1fr))`,
 
-          `repeat(auto-fit,minmax(${minItemWidth}px,1fr))`,
+                ...style,
 
-        ...style,
+            }}
 
-      }}
+        >
 
-    >
+            {
+                children
+            }
 
-      {children}
+        </div>
 
-    </div>
-
-  );
-
+    );
 }

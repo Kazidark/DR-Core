@@ -1,26 +1,34 @@
-import type { CSSProperties, ReactNode } from "react";
+import type {
+    CSSProperties,
+    ReactNode,
+} from "react";
+
 
 export type DRGridGap =
-  | "none"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl";
+    | "none"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl";
+
 
 export interface DRGridProps {
 
-  children: ReactNode;
+    children: ReactNode;
 
-  columns?: number;
+    /**
+     * Se conserva por compatibilidad
+     * con implementaciones existentes.
+     */
+    columns?: number;
 
-  gap?: DRGridGap;
+    gap?: DRGridGap;
 
-  minItemWidth?: number;
+    minItemWidth?: number;
 
-  className?: string;
+    className?: string;
 
-  style?: CSSProperties;
+    style?: CSSProperties;
 
-  id?: string;
-
+    id?: string;
 }

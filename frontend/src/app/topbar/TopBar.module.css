@@ -1,3 +1,90 @@
-.topbar{
+.topbar {
+    width: 100%;
+    min-width: 0;
+}
+
+
+.content {
+    width: 100%;
+    min-width: 0;
+}
+
+
+.pageInfo {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 3px;
+}
+
+
+.title {
+    margin: 0 !important;
+
+    color: #0f172a !important;
+
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+
+    line-height: 1.25 !important;
+}
+
+
+.description {
+    color: #64748b !important;
+
+    font-size: 0.76rem !important;
+
+    line-height: 1.25 !important;
+}
+
+
+.version {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+    padding: 7px 11px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius: 999px;
+
+    background: #f8fafc;
+
+    color: #64748b;
+}
+
+
+.statusDot {
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #10b981;
+}
+
+
+@media (max-width: 700px) {
+
+    .description {
+        display: none;
+    }
+
+
+    .version {
+        padding: 6px 9px;
+    }
 
 }

@@ -1,29 +1,49 @@
-.page{
+.page {
+    display: flex;
 
-    display:flex;
+    flex-direction: column;
 
-    flex-direction:column;
+    width: 100%;
+    min-width: 0;
 
-    gap:32px;
-
+    gap: 24px;
 }
 
-.header{
 
-    display:flex;
+.header {
+    display: flex;
 
-    justify-content:space-between;
+    justify-content: space-between;
 
-    align-items:flex-start;
+    align-items: flex-start;
 
+    gap: 24px;
 }
 
-.content{
 
-    display:flex;
+.titleGroup {
+    display: flex;
 
-    flex-direction:column;
+    flex-direction: column;
 
-    gap:24px;
+    gap: 6px;
 
+    min-width: 0;
+}
+
+
+.actions {
+    flex-shrink: 0;
+}
+
+
+.content {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+    min-width: 0;
+
+    gap: 22px;
 }

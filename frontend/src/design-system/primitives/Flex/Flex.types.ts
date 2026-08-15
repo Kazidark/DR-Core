@@ -1,33 +1,40 @@
-import { HTMLAttributes, ReactNode } from "react";
+import type {
+    HTMLAttributes,
+    ReactNode,
+} from "react";
+
 
 export type FlexDirection =
-  | "row"
-  | "column";
+    | "row"
+    | "column";
+
 
 export type FlexJustify =
-  | "start"
-  | "center"
-  | "end"
-  | "between"
-  | "around"
-  | "evenly";
+    | "start"
+    | "center"
+    | "end"
+    | "between"
+    | "around"
+    | "evenly";
+
 
 export type FlexAlign =
-  | "start"
-  | "center"
-  | "end"
-  | "stretch";
+    | "start"
+    | "center"
+    | "end"
+    | "stretch";
+
 
 export interface FlexProps
-  extends HTMLAttributes<HTMLDivElement> {
+    extends HTMLAttributes<HTMLDivElement> {
 
-  children?: ReactNode;
+    children?: ReactNode;
 
-  direction?: FlexDirection;
+    direction?: FlexDirection;
 
-  justify?: FlexJustify;
+    justify?: FlexJustify;
 
-  align?: FlexAlign;
+    align?: FlexAlign;
 
-  gap?: number;
+    gap?: number;
 }

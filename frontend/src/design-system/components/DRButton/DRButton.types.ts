@@ -1,32 +1,38 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+    ButtonHTMLAttributes,
+    ReactNode,
+} from "react";
+
 
 export type DRButtonVariant =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "danger"
-  | "ghost";
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "ghost";
+
 
 export type DRButtonSize =
-  | "sm"
-  | "md"
-  | "lg";
+    | "sm"
+    | "md"
+    | "lg";
+
 
 export interface DRButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+    extends ButtonHTMLAttributes<HTMLButtonElement> {
 
-  variant?: DRButtonVariant;
+    variant?: DRButtonVariant;
 
-  size?: DRButtonSize;
+    size?: DRButtonSize;
 
-  loading?: boolean;
+    loading?: boolean;
 
-  fullWidth?: boolean;
+    fullWidth?: boolean;
 
-  leftIcon?: ReactNode;
+    leftIcon?: ReactNode;
 
-  rightIcon?: ReactNode;
+    rightIcon?: ReactNode;
 
-  children: ReactNode;
+    children: ReactNode;
 }

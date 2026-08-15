@@ -1,55 +1,69 @@
-import { CSSProperties, ReactNode } from "react";
+import type {
+    CSSProperties,
+    ReactNode,
+} from "react";
+
 
 export type DRCardVariant =
-  | "default"
-  | "outlined"
-  | "elevated"
-  | "flat";
+    | "default"
+    | "outlined"
+    | "elevated"
+    | "flat";
+
 
 export type DRCardPadding =
-  | "none"
-  | "sm"
-  | "md"
-  | "lg";
+    | "none"
+    | "sm"
+    | "md"
+    | "lg";
+
 
 export type DRCardShadow =
-  | "none"
-  | "sm"
-  | "md"
-  | "lg";
+    | "none"
+    | "sm"
+    | "md"
+    | "lg";
+
 
 export interface DRCardProps {
-  children: ReactNode;
 
-  className?: string;
+    children: ReactNode;
 
-  style?: CSSProperties;
+    className?: string;
 
-  id?: string;
+    style?: CSSProperties;
 
-  variant?: DRCardVariant;
+    id?: string;
 
-  padding?: DRCardPadding;
+    variant?: DRCardVariant;
 
-  shadow?: DRCardShadow;
+    padding?: DRCardPadding;
 
-  hover?: boolean;
+    shadow?: DRCardShadow;
+
+    hover?: boolean;
 }
+
 
 export interface DRCardHeaderProps {
-  children: ReactNode;
 
-  className?: string;
+    children: ReactNode;
+
+    className?: string;
 }
+
 
 export interface DRCardContentProps {
-  children: ReactNode;
 
-  className?: string;
+    children: ReactNode;
+
+    className?: string;
 }
 
-export interface DRCardFooterProps {
-  children: ReactNode;
 
-  className?: string;
+export interface DRCardFooterProps {
+
+    children: ReactNode;
+
+    className?: string;
 }

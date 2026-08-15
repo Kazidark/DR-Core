@@ -1,6 +1,11 @@
-import { CSSProperties, ReactNode } from "react";
+import type {
+    CSSProperties,
+    ReactNode,
+} from "react";
+
 
 export interface DRContainerProps {
+
     children: ReactNode;
 
     className?: string;
@@ -11,7 +16,11 @@ export interface DRContainerProps {
 
     fluid?: boolean;
 
-    padding?: "none" | "sm" | "md" | "lg";
+    padding?:
+        | "none"
+        | "sm"
+        | "md"
+        | "lg";
 
     maxWidth?:
         | "sm"

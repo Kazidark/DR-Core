@@ -1,5 +1,11 @@
-import { HTMLAttributes, ReactNode } from "react";
+import type {
+    HTMLAttributes,
+    ReactNode,
+} from "react";
 
-export interface BoxProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
+
+export interface BoxProps
+    extends HTMLAttributes<HTMLDivElement> {
+
+    children?: ReactNode;
 }

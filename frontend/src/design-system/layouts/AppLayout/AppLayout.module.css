@@ -1,52 +1,154 @@
-.layout{
-    display:grid;
+/* =========================================================
+   LAYOUT PRINCIPAL
+   ========================================================= */
 
-    grid-template-columns:260px 1fr;
+.layout {
+    display:
+        grid;
 
-    grid-template-rows:70px 1fr auto;
+    /*
+     * La primera columna adopta automáticamente
+     * el ancho real del Sidebar.
+     *
+     * Expandido  -> 248px
+     * Contraído  -> 82px
+     */
+    grid-template-columns:
+        max-content
+        minmax(
+            0,
+            1fr
+        );
+
+    grid-template-rows:
+        70px
+        minmax(
+            0,
+            1fr
+        )
+        auto;
 
     grid-template-areas:
         "sidebar header"
         "sidebar content"
         "sidebar footer";
 
-    height:100vh;
+    width:
+        100%;
 
-    background:#F5F7FA;
+    min-width:
+        0;
+
+    height:
+        100vh;
+
+    background:
+        #F5F7FA;
 }
 
-.sidebar{
-    grid-area:sidebar;
 
-    border-right:1px solid #E5E7EB;
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
-    overflow:auto;
+.sidebar {
+    grid-area:
+        sidebar;
+
+    /*
+     * El contenedor padre ya no fuerza
+     * un ancho fijo.
+     */
+    width:
+        max-content;
+
+    min-width:
+        0;
+
+    overflow-y:
+        auto;
+
+    overflow-x:
+        hidden;
+
+    background:
+        #FFFFFF;
 }
 
-.header{
-    grid-area:header;
 
-    border-bottom:1px solid #E5E7EB;
+/* =========================================================
+   HEADER
+   ========================================================= */
 
-    display:flex;
+.header {
+    grid-area:
+        header;
 
-    align-items:center;
+    min-width:
+        0;
 
-    padding:0 24px;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    box-sizing:
+        border-box;
+
+    padding:
+        0 24px;
+
+    border-bottom:
+        1px solid #E5E7EB;
+
+    background:
+        #FFFFFF;
 }
 
-.content{
-    grid-area:content;
 
-    overflow:auto;
+/* =========================================================
+   CONTENIDO PRINCIPAL
+   ========================================================= */
 
-    padding:24px;
+.content {
+    grid-area:
+        content;
+
+    width:
+        100%;
+
+    min-width:
+        0;
+
+    box-sizing:
+        border-box;
+
+    overflow:
+        auto;
+
+    padding:
+        24px;
 }
 
-.footer{
-    grid-area:footer;
 
-    border-top:1px solid #E5E7EB;
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
-    padding:16px 24px;
+.footer {
+    grid-area:
+        footer;
+
+    min-width:
+        0;
+
+    box-sizing:
+        border-box;
+
+    padding:
+        16px 24px;
+
+    border-top:
+        1px solid #E5E7EB;
 }

@@ -1,11 +1,20 @@
-import type { ReactNode } from "react";
+import type {
+    ReactNode,
+} from "react";
 
 export interface DRPageProps {
-  title: string;
+    title: string;
 
-  description?: string;
+    description?: string;
 
-  actions?: ReactNode;
+    actions?: ReactNode;
 
-  children: ReactNode;
+    children: ReactNode;
+
+    /**
+     * Permite ocultar el encabezado interno
+     * cuando el título ya está siendo mostrado
+     * por el TopBar principal.
+     */
+    hideHeader?: boolean;
 }

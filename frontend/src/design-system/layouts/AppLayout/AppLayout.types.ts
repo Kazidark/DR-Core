@@ -1,8 +1,15 @@
-import { ReactNode } from "react";
+import type {
+    ReactNode,
+} from "react";
+
 
 export interface AppLayoutProps {
-  sidebar: ReactNode;
-  header: ReactNode;
-  children: ReactNode;
-  footer?: ReactNode;
+
+    sidebar: ReactNode;
+
+    header: ReactNode;
+
+    children: ReactNode;
+
+    footer?: ReactNode;
 }

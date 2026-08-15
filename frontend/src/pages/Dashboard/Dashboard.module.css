@@ -1,10 +1,1562 @@
-.metrics{
+/* =========================================================
+   MÉTRICAS GENERALES
+   ========================================================= */
 
-    display:grid;
+.coreMetricsSection {
+    display: grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(260px,1fr));
+        repeat(
+            4,
+            minmax(
+                0,
+                1fr
+            )
+        );
 
-    gap:24px;
+    gap: 24px;
+
+    margin-top: 32px;
+}
+
+
+.metricLink {
+    display: block;
+
+    min-width: 0;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    border-radius: 16px;
+
+    transition:
+        transform
+        0.18s ease;
+}
+
+
+.metricLink:hover {
+    transform:
+        translateY(
+            -2px
+        );
+}
+
+
+.metricLink:focus-visible {
+    outline:
+        3px solid
+        rgba(
+            37,
+            99,
+            235,
+            0.25
+        );
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   INVENTARIO
+   ========================================================= */
+
+.inventorySection {
+    margin-top: 40px;
+
+    scroll-margin-top:
+        24px;
+}
+
+
+.sectionHeader {
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+
+.refreshButton {
+    min-height: 40px;
+
+    padding:
+        0
+        16px;
+
+    border:
+        1px solid
+        #cbd5e1;
+
+    border-radius:
+        10px;
+
+    background:
+        #ffffff;
+
+    color:
+        #475569;
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        background-color
+        0.18s ease,
+        border-color
+        0.18s ease;
+}
+
+
+.refreshButton:hover:not(
+    :disabled
+) {
+    background:
+        #f8fafc;
+
+    border-color:
+        #94a3b8;
+}
+
+
+.refreshButton:disabled {
+    cursor:
+        wait;
+
+    opacity:
+        0.6;
+}
+
+
+/* =========================================================
+   RESUMEN PRINCIPAL INVENTARIO
+   ========================================================= */
+
+.summaryGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 16px;
+}
+
+
+.summaryCard {
+    display: flex;
+
+    flex-direction:
+        column;
+
+    min-width: 0;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-top:
+        4px solid
+        #2563eb;
+
+    border-radius:
+        14px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            15,
+            23,
+            42,
+            0.04
+        );
+}
+
+
+.summaryOperational {
+    border-top-color:
+        #059669;
+}
+
+
+.summaryStock {
+    border-top-color:
+        #d97706;
+}
+
+
+.summaryInactive {
+    border-top-color:
+        #dc2626;
+}
+
+
+.summaryLabel {
+    color:
+        #64748b;
+
+    font-size:
+        13px;
+
+    font-weight:
+        600;
+}
+
+
+.summaryValue {
+    margin-top:
+        8px;
+
+    color:
+        #0f172a;
+
+    font-size:
+        32px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+}
+
+
+.summaryMeta {
+    margin-top:
+        10px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        12px;
+}
+
+
+/* =========================================================
+   CATEGORÍAS INVENTARIO
+   ========================================================= */
+
+.categoryGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            6,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+
+.categoryCard {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap: 8px;
+
+    min-width: 0;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        14px;
+
+    background:
+        #ffffff;
+}
+
+
+.categoryCard::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    height:
+        4px;
+
+    background:
+        #2563eb;
+}
+
+
+.categoryCard span {
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+.categoryCard strong {
+    color:
+        #0f172a;
+
+    font-size:
+        26px;
+
+    font-weight:
+        800;
+}
+
+
+.categoryPc::before {
+    background:
+        #2563eb;
+}
+
+
+.categoryMonitor::before {
+    background:
+        #0891b2;
+}
+
+
+.categoryTablet::before {
+    background:
+        #7c3aed;
+}
+
+
+.categoryModem::before {
+    background:
+        #ea580c;
+}
+
+
+.categoryPhone::before {
+    background:
+        #e11d48;
+}
+
+
+.categoryChip::before {
+    background:
+        #059669;
+}
+
+
+/* =========================================================
+   GRÁFICOS GENERALES
+   ========================================================= */
+
+.chartGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 20px;
+
+    margin-top: 20px;
+}
+
+
+.chartCard {
+    min-width: 0;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        16px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            15,
+            23,
+            42,
+            0.04
+        );
+}
+
+
+.chartHeader {
+    display: flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap: 16px;
+
+    margin-bottom: 22px;
+}
+
+
+.chartHeader h3 {
+    margin: 0;
+
+    color:
+        #0f172a;
+
+    font-size:
+        16px;
+
+    font-weight:
+        800;
+}
+
+
+.chartHeader p {
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================================
+   BARRAS
+   ========================================================= */
+
+.barList {
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap: 16px;
+}
+
+
+.barItem {
+    min-width: 0;
+}
+
+
+.barInfo {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap: 16px;
+
+    margin-bottom: 7px;
+}
+
+
+.barInfo span {
+    overflow:
+        hidden;
+
+    color:
+        #475569;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+.barInfo strong {
+    flex:
+        0
+        0
+        auto;
+
+    color:
+        #0f172a;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+}
+
+
+.barTrack {
+    overflow:
+        hidden;
+
+    width:
+        100%;
+
+    height:
+        8px;
+
+    border-radius:
+        999px;
+
+    background:
+        #f1f5f9;
+}
+
+
+.categoryBar,
+.stateBar,
+.areaBar,
+.ipBar {
+    height:
+        100%;
+
+    min-width:
+        2px;
+
+    border-radius:
+        inherit;
+
+    transition:
+        width
+        0.3s ease;
+}
+
+
+.categoryBar {
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+}
+
+
+.areaBar {
+    background:
+        linear-gradient(
+            90deg,
+            #0f766e,
+            #2dd4bf
+        );
+}
+
+
+.stateOperational {
+    background:
+        #10b981;
+}
+
+
+.stateStock {
+    background:
+        #f59e0b;
+}
+
+
+.stateInactive {
+    background:
+        #ef4444;
+}
+
+
+.stateDonated {
+    background:
+        #8b5cf6;
+}
+
+
+.stateSold {
+    background:
+        #64748b;
+}
+
+
+/* =========================================================
+   CHIPS
+   ========================================================= */
+
+.chipGrid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 14px;
+}
+
+
+.chipIndicator {
+    padding: 18px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #f8fafc;
+}
+
+
+.chipIndicator span {
+    display:
+        block;
+
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+}
+
+
+.chipIndicator strong {
+    display:
+        block;
+
+    margin-top:
+        6px;
+
+    color:
+        #0f172a;
+
+    font-size:
+        25px;
+
+    font-weight:
+        800;
+}
+
+
+.chipSummary {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        1px;
+
+    overflow:
+        hidden;
+
+    margin-top:
+        18px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #e2e8f0;
+}
+
+
+.chipSummary > div {
+    padding: 14px;
+
+    background:
+        #ffffff;
+}
+
+
+.chipSummary span {
+    display:
+        block;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+}
+
+
+.chipSummary strong {
+    display:
+        block;
+
+    margin-top:
+        5px;
+
+    color:
+        #334155;
+
+    font-size:
+        16px;
+
+    font-weight:
+        800;
+}
+
+
+/* =========================================================
+   MÓDULOS DASHBOARD
+   ========================================================= */
+
+.moduleSection {
+    margin-top:
+        40px;
+
+    padding:
+        26px;
+
+    scroll-margin-top:
+        24px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        18px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 8px 24px
+        rgba(
+            15,
+            23,
+            42,
+            0.045
+        );
+}
+
+
+.vpnSection {
+    border-top:
+        4px solid
+        #7c3aed;
+
+    background:
+        linear-gradient(
+            180deg,
+            #faf9ff
+                0%,
+            #ffffff
+                150px
+        );
+}
+
+
+.ipSection {
+    border-top:
+        4px solid
+        #0891b2;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f7feff
+                0%,
+            #ffffff
+                150px
+        );
+}
+
+
+/* =========================================================
+   IR AL MÓDULO
+   ========================================================= */
+
+.moduleLink {
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-height:
+        40px;
+
+    padding:
+        0
+        15px;
+
+    border:
+        1px solid
+        #dbe3ec;
+
+    border-radius:
+        10px;
+
+    background:
+        #ffffff;
+
+    color:
+        #475569;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    text-decoration:
+        none;
+
+    box-shadow:
+        0 2px 7px
+        rgba(
+            15,
+            23,
+            42,
+            0.035
+        );
+
+    transition:
+        transform
+        0.18s ease,
+        border-color
+        0.18s ease,
+        background-color
+        0.18s ease,
+        color
+        0.18s ease;
+}
+
+
+.moduleLink:hover {
+    transform:
+        translateY(
+            -1px
+        );
+
+    border-color:
+        #cbd5e1;
+
+    background:
+        #f8fafc;
+
+    color:
+        #0f172a;
+}
+
+
+/* =========================================================
+   RESUMEN VPN / IP
+   ========================================================= */
+
+.moduleSummaryGrid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 16px;
+}
+
+
+.ipSummaryGrid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            5,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 16px;
+}
+
+
+.moduleSummaryCard {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    min-width:
+        0;
+
+    padding:
+        20px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        14px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            15,
+            23,
+            42,
+            0.04
+        );
+}
+
+
+.moduleSummaryCard::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    right:
+        0;
+
+    left:
+        0;
+
+    height:
+        4px;
+
+    background:
+        #94a3b8;
+}
+
+
+.moduleSummaryCard > span {
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+.moduleSummaryCard > strong {
+    margin-top:
+        9px;
+
+    color:
+        #0f172a;
+
+    font-size:
+        30px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+}
+
+
+.moduleSummaryCard > small {
+    margin-top:
+        10px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+}
+
+
+/* =========================================================
+   COLORES VPN
+   ========================================================= */
+
+.vpnTotal::before {
+    background:
+        #7c3aed;
+}
+
+
+.vpnAssigned::before {
+    background:
+        #059669;
+}
+
+
+.vpnReserve::before {
+    background:
+        #d97706;
+}
+
+
+.vpnActive::before {
+    background:
+        #0d9488;
+}
+
+
+/* =========================================================
+   COLORES IP
+   ========================================================= */
+
+.ipTotal::before {
+    background:
+        #0f172a;
+}
+
+
+.ip26::before {
+    background:
+        #2563eb;
+}
+
+
+.ip46::before {
+    background:
+        #0891b2;
+}
+
+
+.ip56::before {
+    background:
+        #7c3aed;
+}
+
+
+.ip100::before {
+    background:
+        #ea580c;
+}
+
+
+/* =========================================================
+   DETALLE DE MÓDULOS
+   ========================================================= */
+
+.moduleDetailGrid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 20px;
+
+    margin-top:
+        20px;
+}
+
+
+.moduleDetailCard {
+    min-width: 0;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        16px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            15,
+            23,
+            42,
+            0.04
+        );
+}
+
+
+.moduleDetailHeader {
+    display:
+        flex;
+
+    align-items:
+        flex-start;
+
+    justify-content:
+        space-between;
+
+    gap: 16px;
+
+    margin-bottom:
+        18px;
+}
+
+
+.moduleDetailHeader h3 {
+    margin: 0;
+
+    color:
+        #0f172a;
+
+    font-size:
+        16px;
+
+    font-weight:
+        800;
+}
+
+
+.moduleDetailHeader p {
+    margin:
+        5px
+        0
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+}
+
+
+/* =========================================================
+   INDICADORES SIMPLES VPN
+   ========================================================= */
+
+.simpleIndicators {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap: 14px;
+}
+
+
+.simpleIndicator {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap: 12px;
+
+    padding:
+        16px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #f8fafc;
+}
+
+
+.simpleIndicator span {
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        650;
+}
+
+
+.simpleIndicator strong {
+    color:
+        #0f172a;
+
+    font-size:
+        20px;
+
+    font-weight:
+        800;
+}
+
+
+.simpleIndicatorSuccess {
+    border-color:
+        #bbf7d0;
+
+    background:
+        #f0fdf4;
+}
+
+
+.simpleIndicatorSuccess strong {
+    color:
+        #15803d;
+}
+
+
+.simpleIndicatorDanger {
+    border-color:
+        #fecaca;
+
+    background:
+        #fef2f2;
+}
+
+
+.simpleIndicatorDanger strong {
+    color:
+        #b91c1c;
+}
+
+
+/* =========================================================
+   GRÁFICO IP
+   ========================================================= */
+
+.ipChartContainer {
+    margin-top:
+        20px;
+}
+
+
+.ipBar26 {
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+}
+
+
+.ipBar46 {
+    background:
+        linear-gradient(
+            90deg,
+            #0891b2,
+            #22d3ee
+        );
+}
+
+
+.ipBar56 {
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #a78bfa
+        );
+}
+
+
+.ipBar100 {
+    background:
+        linear-gradient(
+            90deg,
+            #ea580c,
+            #fb923c
+        );
+}
+
+
+/* =========================================================
+   ESTADOS
+   ========================================================= */
+
+.error {
+    margin-top:
+        24px;
+
+    padding:
+        12px
+        14px;
+
+    border:
+        1px solid
+        #fecaca;
+
+    border-radius:
+        10px;
+
+    background:
+        #fef2f2;
+
+    color:
+        #b91c1c;
+
+    font-size:
+        13px;
+}
+
+
+.emptyState {
+    padding:
+        24px
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        13px;
+
+    text-align:
+        center;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (
+    max-width:
+        1280px
+) {
+
+    .coreMetricsSection,
+    .summaryGrid,
+    .moduleSummaryGrid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .ipSummaryGrid {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .categoryGrid {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+}
+
+
+@media (
+    max-width:
+        900px
+) {
+
+    .chartGrid,
+    .moduleDetailGrid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .categoryGrid,
+    .ipSummaryGrid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+}
+
+
+@media (
+    max-width:
+        640px
+) {
+
+    .coreMetricsSection,
+    .summaryGrid,
+    .categoryGrid,
+    .chipGrid,
+    .chipSummary,
+    .moduleSummaryGrid,
+    .ipSummaryGrid,
+    .simpleIndicators {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .sectionHeader {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .refreshButton,
+    .moduleLink {
+        width:
+            100%;
+
+        box-sizing:
+            border-box;
+    }
+
+
+    .moduleSection {
+        padding:
+            18px;
+    }
 
 }

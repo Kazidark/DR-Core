@@ -1,22 +1,103 @@
-import { Box, Text } from "@/design-system";
+import {
+    useAuth,
+} from "@/auth";
 
-export function SidebarFooter() {
+import styles from "./Sidebar.module.css";
 
-  return (
 
-    <Box
-      style={{
-        padding: "24px",
-        borderTop: "1px solid #E5E7EB",
-      }}
-    >
+type SidebarFooterProps = {
+    collapsed:
+        boolean;
+};
 
-      <Text variant="caption">
-        Administrador
-      </Text>
 
-    </Box>
+export function SidebarFooter({
+    collapsed,
+}: SidebarFooterProps) {
 
-  );
+    const {
+        usuario,
+    } =
+        useAuth();
+
+
+    const rol =
+        usuario?.rol ??
+        "Usuario";
+
+
+    const rolCompacto =
+        rol ===
+        "Administrador"
+            ? "ADM"
+            : rol ===
+              "Consultor"
+            ? "CON"
+            : "USR";
+
+
+    return (
+
+        <footer
+            className={[
+                styles.sidebarFooter,
+
+                collapsed
+                    ? styles.sidebarFooterCollapsed
+                    : "",
+
+            ].join(
+                " ",
+            )}
+
+            title={
+                collapsed
+                    ? rol
+                    : undefined
+            }
+        >
+
+            {!collapsed ? (
+
+                <>
+
+                    <span
+                        className={
+                            styles.footerCaption
+                        }
+                    >
+                        Perfil activo
+                    </span>
+
+
+                    <strong
+                        className={
+                            styles.footerRole
+                        }
+                    >
+                        {
+                            rol
+                        }
+                    </strong>
+
+                </>
+
+            ) : (
+
+                <span
+                    className={
+                        styles.footerRoleCompact
+                    }
+                >
+                    {
+                        rolCompacto
+                    }
+                </span>
+
+            )}
+
+        </footer>
+
+    );
 
 }
