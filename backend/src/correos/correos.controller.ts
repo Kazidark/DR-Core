@@ -6,7 +6,6 @@ import {
   ParseIntPipe,
   Patch,
   Post,
-  Query,
   UseGuards,
 } from '@nestjs/common';
 
@@ -27,89 +26,77 @@ import {
 } from '../usuarios/usuarios.entity';
 
 import {
-  CreateIpDto,
-  UpdateIpDto,
-} from './ips.dto';
+  CambiarEstadoCorreoDto,
+  CreateCorreoDto,
+  UpdateCorreoDto,
+} from './correos.dto';
 
 import {
-  SegmentoIp,
-} from './ips.entity';
-
-import {
-  IpsService,
-} from './ips.service';
+  CorreosService,
+} from './correos.service';
 
 
-@Controller('ips')
+@Controller('correos')
 @UseGuards(
   JwtAuthGuard,
   RolesGuard,
 )
-export class IpsController {
+@Roles(
+  RolUsuario.ADMINISTRADOR,
+)
+export class CorreosController {
+
   constructor(
     private readonly service:
-      IpsService,
+      CorreosService,
   ) {}
 
 
   /* =====================================================
      RESUMEN DASHBOARD
+
      ADMINISTRADOR + CONSULTOR
+
+     IMPORTANTE:
+     Esta ruta debe declararse antes de @Get(':id')
+     para evitar que "resumen" pueda interpretarse
+     como un parámetro dinámico.
      ===================================================== */
 
+  @Get('resumen')
   @Roles(
     RolUsuario.ADMINISTRADOR,
     RolUsuario.CONSULTOR,
   )
-  @Get('resumen')
   resumen() {
 
-    return this.service.resumen();
+    return this.service
+      .resumen();
 
   }
 
 
   /* =====================================================
      LISTAR
+
      SOLO ADMINISTRADOR
      ===================================================== */
 
-  @Roles(
-    RolUsuario.ADMINISTRADOR,
-  )
   @Get()
-  listar(
-    @Query(
-      'segmento',
-    )
-    segmento?:
-      SegmentoIp,
-  ) {
+  listar() {
 
-    if (
-      segmento
-    ) {
-
-      return this.service.listarPorSegmento(
-        segmento,
-      );
-
-    }
-
-
-    return this.service.listar();
+    return this.service
+      .listar();
 
   }
 
 
   /* =====================================================
-     OBTENER
+     OBTENER POR ID
+
      SOLO ADMINISTRADOR
      ===================================================== */
 
-  @Roles(
-    RolUsuario.ADMINISTRADOR,
-  )
   @Get(':id')
   obtener(
     @Param(
@@ -120,43 +107,72 @@ export class IpsController {
       number,
   ) {
 
-    return this.service.obtener(
-      id,
-    );
+    return this.service
+      .obtener(
+        id,
+      );
 
   }
 
 
   /* =====================================================
      CREAR
+
      SOLO ADMINISTRADOR
      ===================================================== */
 
-  @Roles(
-    RolUsuario.ADMINISTRADOR,
-  )
   @Post()
   crear(
     @Body()
     dto:
-      CreateIpDto,
+      CreateCorreoDto,
   ) {
 
-    return this.service.crear(
-      dto,
-    );
+    return this.service
+      .crear(
+        dto,
+      );
+
+  }
+
+
+  /* =====================================================
+     CAMBIAR ESTADO
+
+     SOLO ADMINISTRADOR
+
+     Usado ↔ Reserva
+     ===================================================== */
+
+  @Patch(':id/estado')
+  cambiarEstado(
+    @Param(
+      'id',
+      ParseIntPipe,
+    )
+    id:
+      number,
+
+    @Body()
+    dto:
+      CambiarEstadoCorreoDto,
+  ) {
+
+    return this.service
+      .cambiarEstado(
+        id,
+        dto,
+      );
 
   }
 
 
   /* =====================================================
      ACTUALIZAR
+
      SOLO ADMINISTRADOR
      ===================================================== */
 
-  @Roles(
-    RolUsuario.ADMINISTRADOR,
-  )
   @Patch(':id')
   actualizar(
     @Param(
@@ -168,13 +184,14 @@ export class IpsController {
 
     @Body()
     dto:
-      UpdateIpDto,
+      UpdateCorreoDto,
   ) {
 
-    return this.service.actualizar(
-      id,
-      dto,
-    );
+    return this.service
+      .actualizar(
+        id,
+        dto,
+      );
 
   }
 

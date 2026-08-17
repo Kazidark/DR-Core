@@ -4,7 +4,9 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 
-import { InjectRepository } from '@nestjs/typeorm';
+import {
+  InjectRepository,
+} from '@nestjs/typeorm';
 
 import {
   DeepPartial,
@@ -51,30 +53,49 @@ type ChipDashboard = {
 };
 
 
+type ChipAreaDashboard = {
+  area: string;
+  cantidad: number;
+};
+
+
 @Injectable()
 export class InventarioService {
+
   constructor(
-    @InjectRepository(PCLaptop)
+    @InjectRepository(
+      PCLaptop,
+    )
     private readonly pcRepository:
       Repository<PCLaptop>,
 
-    @InjectRepository(Monitor)
+    @InjectRepository(
+      Monitor,
+    )
     private readonly monitorRepository:
       Repository<Monitor>,
 
-    @InjectRepository(Tablet)
+    @InjectRepository(
+      Tablet,
+    )
     private readonly tabletRepository:
       Repository<Tablet>,
 
-    @InjectRepository(Modem)
+    @InjectRepository(
+      Modem,
+    )
     private readonly modemRepository:
       Repository<Modem>,
 
-    @InjectRepository(Celular)
+    @InjectRepository(
+      Celular,
+    )
     private readonly celularRepository:
       Repository<Celular>,
 
-    @InjectRepository(Chip)
+    @InjectRepository(
+      Chip,
+    )
     private readonly chipRepository:
       Repository<Chip>,
   ) {}
@@ -87,33 +108,46 @@ export class InventarioService {
   private async crear<
     T extends ObjectLiteral
   >(
-    repository: Repository<T>,
-    data: DeepPartial<T>,
+    repository:
+      Repository<T>,
+
+    data:
+      DeepPartial<T>,
   ): Promise<T> {
+
     try {
+
       const entity =
         repository.create(
           data,
         );
 
+
       return await repository.save(
         entity,
       );
+
     } catch (
-      error: unknown
+      error:
+        unknown
     ) {
+
       this.procesarErrorBD(
         error,
       );
+
     }
+
   }
 
 
   private async listar<
     T extends ObjectLiteral
   >(
-    repository: Repository<T>,
+    repository:
+      Repository<T>,
   ): Promise<T[]> {
+
     return repository
       .createQueryBuilder(
         'registro',
@@ -123,16 +157,23 @@ export class InventarioService {
         'DESC',
       )
       .getMany();
+
   }
 
 
   private async obtener<
     T extends ObjectLiteral
   >(
-    repository: Repository<T>,
-    id: number,
-    nombre: string,
+    repository:
+      Repository<T>,
+
+    id:
+      number,
+
+    nombre:
+      string,
   ): Promise<T> {
+
     const entity =
       await repository.findOne({
         where: {
@@ -142,25 +183,38 @@ export class InventarioService {
       });
 
 
-    if (!entity) {
+    if (
+      !entity
+    ) {
+
       throw new NotFoundException(
         `${nombre} con ID ${id} no encontrado.`,
       );
+
     }
 
 
     return entity;
+
   }
 
 
   private async actualizar<
     T extends ObjectLiteral
   >(
-    repository: Repository<T>,
-    id: number,
-    data: DeepPartial<T>,
-    nombre: string,
+    repository:
+      Repository<T>,
+
+    id:
+      number,
+
+    data:
+      DeepPartial<T>,
+
+    nombre:
+      string,
   ): Promise<T> {
+
     const entity =
       await this.obtener(
         repository,
@@ -176,28 +230,41 @@ export class InventarioService {
 
 
     try {
+
       return await repository.save(
         entity,
       );
+
     } catch (
-      error: unknown
+      error:
+        unknown
     ) {
+
       this.procesarErrorBD(
         error,
       );
+
     }
+
   }
 
 
   private async eliminar<
     T extends ObjectLiteral
   >(
-    repository: Repository<T>,
-    id: number,
-    nombre: string,
+    repository:
+      Repository<T>,
+
+    id:
+      number,
+
+    nombre:
+      string,
   ): Promise<{
-    message: string;
+    message:
+      string;
   }> {
+
     const entity =
       await this.obtener(
         repository,
@@ -215,18 +282,23 @@ export class InventarioService {
       message:
         `${nombre} eliminado correctamente.`,
     };
+
   }
 
 
   private procesarErrorBD(
-    error: unknown,
+    error:
+      unknown,
   ): never {
+
     const databaseError =
       error as {
-        number?: number;
+        number?:
+          number;
 
         driverError?: {
-          number?: number;
+          number?:
+            number;
         };
       };
 
@@ -239,16 +311,21 @@ export class InventarioService {
 
 
     if (
-      errorNumber === 2601 ||
-      errorNumber === 2627
+      errorNumber ===
+        2601 ||
+      errorNumber ===
+        2627
     ) {
+
       throw new ConflictException(
         'Ya existe un registro con uno de los valores definidos como únicos.',
       );
+
     }
 
 
     throw error;
+
   }
 
 
@@ -263,10 +340,11 @@ export class InventarioService {
      * en paralelo.
      *
      * Más adelante, si el volumen de información
-     * crece considerablemente, podremos migrar
-     * estas métricas a consultas COUNT/GROUP BY
+     * crece considerablemente, estas métricas
+     * pueden migrarse a consultas COUNT / GROUP BY
      * directamente en SQL Server.
      */
+
     const [
       pclaptops,
       monitores,
@@ -276,12 +354,25 @@ export class InventarioService {
       chips,
     ] =
       await Promise.all([
-        this.pcRepository.find(),
-        this.monitorRepository.find(),
-        this.tabletRepository.find(),
-        this.modemRepository.find(),
-        this.celularRepository.find(),
-        this.chipRepository.find(),
+
+        this.pcRepository
+          .find(),
+
+        this.monitorRepository
+          .find(),
+
+        this.tabletRepository
+          .find(),
+
+        this.modemRepository
+          .find(),
+
+        this.celularRepository
+          .find(),
+
+        this.chipRepository
+          .find(),
+
       ]);
 
 
@@ -290,6 +381,7 @@ export class InventarioService {
        ===================================================== */
 
     const totales = {
+
       pclaptops:
         pclaptops.length,
 
@@ -307,21 +399,24 @@ export class InventarioService {
 
       chips:
         chips.length,
+
     };
 
 
     const totalActivos =
-      Object.values(
-        totales,
-      ).reduce(
-        (
-          total,
-          cantidad,
-        ) =>
-          total +
-          cantidad,
-        0,
-      );
+      Object
+        .values(
+          totales,
+        )
+        .reduce(
+          (
+            total,
+            cantidad,
+          ) =>
+            total +
+            cantidad,
+          0,
+        );
 
 
     /* =====================================================
@@ -335,16 +430,30 @@ export class InventarioService {
         ...tablets,
         ...modems,
         ...celulares,
-      ] as RegistroDashboard[];
+      ] as
+        RegistroDashboard[];
 
 
     const estadosEquipo = {
-      Operativo: 0,
-      Inoperativo: 0,
-      Stock: 0,
-      Donado: 0,
-      Vendido: 0,
-      SinEstado: 0,
+
+      Operativo:
+        0,
+
+      Inoperativo:
+        0,
+
+      Stock:
+        0,
+
+      Donado:
+        0,
+
+      Vendido:
+        0,
+
+      SinEstado:
+        0,
+
     };
 
 
@@ -356,7 +465,7 @@ export class InventarioService {
       const estado =
         String(
           equipo.estadoEquipo ??
-            '',
+          '',
         ).trim();
 
 
@@ -365,38 +474,50 @@ export class InventarioService {
       ) {
 
         case 'Operativo':
+
           estadosEquipo
             .Operativo += 1;
+
           break;
 
 
         case 'Inoperativo':
+
           estadosEquipo
             .Inoperativo += 1;
+
           break;
 
 
         case 'Stock':
+
           estadosEquipo
             .Stock += 1;
+
           break;
 
 
         case 'Donado':
+
           estadosEquipo
             .Donado += 1;
+
           break;
 
 
         case 'Vendido':
+
           estadosEquipo
             .Vendido += 1;
+
           break;
 
 
         default:
+
           estadosEquipo
             .SinEstado += 1;
+
           break;
 
       }
@@ -409,7 +530,8 @@ export class InventarioService {
 
 
     const porcentajeOperativo =
-      totalEquipos > 0
+      totalEquipos >
+      0
         ? Number(
             (
               (
@@ -426,7 +548,8 @@ export class InventarioService {
 
 
     const porcentajeStock =
-      totalEquipos > 0
+      totalEquipos >
+      0
         ? Number(
             (
               (
@@ -443,7 +566,8 @@ export class InventarioService {
 
 
     const porcentajeInoperativo =
-      totalEquipos > 0
+      totalEquipos >
+      0
         ? Number(
             (
               (
@@ -464,13 +588,52 @@ export class InventarioService {
        ===================================================== */
 
     const resumenChips = {
-      activas: 0,
-      baja: 0,
-      datos: 0,
-      voz: 0,
-      stock: 0,
-      asignados: 0,
+
+      activas:
+        0,
+
+      baja:
+        0,
+
+      datos:
+        0,
+
+      voz:
+        0,
+
+      stock:
+        0,
+
+      asignados:
+        0,
+
     };
+
+
+    /*
+     * Este Map almacenará únicamente chips
+     * realmente asignados a un área.
+     *
+     * No incluiremos:
+     *
+     * - área vacía
+     * - Stock
+     *
+     * porque esos chips no representan una
+     * asignación a un área de la organización.
+     */
+
+    const chipsPorAreaMap =
+      new Map<
+        string,
+        {
+          area:
+            string;
+
+          cantidad:
+            number;
+        }
+      >();
 
 
     for (
@@ -487,19 +650,22 @@ export class InventarioService {
          DISPONIBILIDAD DEL CHIP SEGÚN ÁREA
          ================================================= */
 
-      const area =
+      const areaOriginal =
         String(
           chip.area ??
-            '',
-        )
-          .trim()
+          '',
+        ).trim();
+
+
+      const areaNormalizada =
+        areaOriginal
           .toLocaleLowerCase(
             'es',
           );
 
 
       if (
-        area ===
+        areaNormalizada ===
         'stock'
       ) {
 
@@ -509,15 +675,63 @@ export class InventarioService {
       }
 
       else if (
-        area
+        areaOriginal
       ) {
 
         /*
          * Todo chip que tiene un área informada
          * diferente de Stock se considera asignado.
          */
+
         resumenChips
           .asignados += 1;
+
+
+        /* ===============================================
+           REGISTRAR CHIP ASIGNADO POR ÁREA
+
+           Se utiliza el valor normalizado como clave
+           para evitar separar, por ejemplo:
+
+           Sistemas
+           sistemas
+           SISTEMAS
+
+           en tres grupos diferentes.
+
+           Para mostrarlo en pantalla conservamos
+           la primera escritura encontrada.
+           =============================================== */
+
+        const areaExistente =
+          chipsPorAreaMap.get(
+            areaNormalizada,
+          );
+
+
+        if (
+          areaExistente
+        ) {
+
+          areaExistente
+            .cantidad += 1;
+
+        }
+
+        else {
+
+          chipsPorAreaMap.set(
+            areaNormalizada,
+            {
+              area:
+                areaOriginal,
+
+              cantidad:
+                1,
+            },
+          );
+
+        }
 
       }
 
@@ -529,7 +743,7 @@ export class InventarioService {
       const estado =
         String(
           chip.estado ??
-            '',
+          '',
         )
           .trim()
           .toLocaleLowerCase(
@@ -565,7 +779,7 @@ export class InventarioService {
       const uso =
         String(
           chip.uso ??
-            '',
+          '',
         )
           .trim()
           .toLocaleLowerCase(
@@ -597,7 +811,60 @@ export class InventarioService {
 
 
     /* =====================================================
-       DISTRIBUCIÓN POR ÁREA
+       CHIPS ASIGNADOS POR ÁREA
+
+       Orden:
+       1. Mayor cantidad de chips
+       2. Nombre del área en caso de empate
+       ===================================================== */
+
+    const chipsPorArea:
+      ChipAreaDashboard[] =
+        Array
+          .from(
+            chipsPorAreaMap
+              .values(),
+          )
+          .sort(
+            (
+              a,
+              b,
+            ) => {
+
+              const diferencia =
+                b.cantidad -
+                a.cantidad;
+
+
+              if (
+                diferencia !==
+                0
+              ) {
+
+                return diferencia;
+
+              }
+
+
+              return a.area
+                .localeCompare(
+                  b.area,
+                  'es',
+                  {
+                    sensitivity:
+                      'base',
+                  },
+                );
+
+            },
+          );
+
+
+    /* =====================================================
+       DISTRIBUCIÓN GENERAL POR ÁREA
+
+       Esta distribución continúa incluyendo todos
+       los equipos y chips, igual que antes.
        ===================================================== */
 
     const porAreaMap =
@@ -616,7 +883,7 @@ export class InventarioService {
         const area =
           String(
             areaRaw ??
-              '',
+            '',
           ).trim() ||
           'Sin área';
 
@@ -629,7 +896,7 @@ export class InventarioService {
             ) ??
             0
           ) +
-            1,
+          1,
         );
 
       };
@@ -665,9 +932,11 @@ export class InventarioService {
 
 
     const porArea =
-      Array.from(
-        porAreaMap.entries(),
-      )
+      Array
+        .from(
+          porAreaMap
+            .entries(),
+        )
         .map(
           ([
             area,
@@ -701,7 +970,8 @@ export class InventarioService {
             'PC / Laptops',
 
           cantidad:
-            totales.pclaptops,
+            totales
+              .pclaptops,
         },
 
         {
@@ -712,7 +982,8 @@ export class InventarioService {
             'Monitores',
 
           cantidad:
-            totales.monitores,
+            totales
+              .monitores,
         },
 
         {
@@ -723,7 +994,8 @@ export class InventarioService {
             'Tablets',
 
           cantidad:
-            totales.tablets,
+            totales
+              .tablets,
         },
 
         {
@@ -734,7 +1006,8 @@ export class InventarioService {
             'Módems',
 
           cantidad:
-            totales.modems,
+            totales
+              .modems,
         },
 
         {
@@ -745,7 +1018,8 @@ export class InventarioService {
             'Celulares',
 
           cantidad:
-            totales.celulares,
+            totales
+              .celulares,
         },
 
         {
@@ -756,12 +1030,18 @@ export class InventarioService {
             'Chips',
 
           cantidad:
-            totales.chips,
+            totales
+              .chips,
         },
       ];
 
 
+    /* =====================================================
+       RESPUESTA DASHBOARD
+       ===================================================== */
+
     return {
+
       totalActivos,
 
       totalEquipos,
@@ -773,15 +1053,26 @@ export class InventarioService {
       estadosEquipo,
 
       indicadores: {
+
         porcentajeOperativo,
+
         porcentajeStock,
+
         porcentajeInoperativo,
+
       },
 
-      chips:
-        resumenChips,
+      chips: {
+
+        ...resumenChips,
+
+        porArea:
+          chipsPorArea,
+
+      },
 
       porArea,
+
     };
 
   }
@@ -795,53 +1086,67 @@ export class InventarioService {
     dto:
       CreatePCLaptopDto,
   ) {
+
     return this.crear(
       this.pcRepository,
       dto,
     );
+
   }
 
 
   listarPC() {
+
     return this.listar(
       this.pcRepository,
     );
+
   }
 
 
   obtenerPC(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.obtener(
       this.pcRepository,
       id,
       'PC/Laptop',
     );
+
   }
 
 
   actualizarPC(
-    id: number,
+    id:
+      number,
+
     dto:
       UpdatePCLaptopDto,
   ) {
+
     return this.actualizar(
       this.pcRepository,
       id,
       dto,
       'PC/Laptop',
     );
+
   }
 
 
   eliminarPC(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.eliminar(
       this.pcRepository,
       id,
       'PC/Laptop',
     );
+
   }
 
 
@@ -853,53 +1158,67 @@ export class InventarioService {
     dto:
       CreateMonitorDto,
   ) {
+
     return this.crear(
       this.monitorRepository,
       dto,
     );
+
   }
 
 
   listarMonitores() {
+
     return this.listar(
       this.monitorRepository,
     );
+
   }
 
 
   obtenerMonitor(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.obtener(
       this.monitorRepository,
       id,
       'Monitor',
     );
+
   }
 
 
   actualizarMonitor(
-    id: number,
+    id:
+      number,
+
     dto:
       UpdateMonitorDto,
   ) {
+
     return this.actualizar(
       this.monitorRepository,
       id,
       dto,
       'Monitor',
     );
+
   }
 
 
   eliminarMonitor(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.eliminar(
       this.monitorRepository,
       id,
       'Monitor',
     );
+
   }
 
 
@@ -911,53 +1230,67 @@ export class InventarioService {
     dto:
       CreateTabletDto,
   ) {
+
     return this.crear(
       this.tabletRepository,
       dto,
     );
+
   }
 
 
   listarTablets() {
+
     return this.listar(
       this.tabletRepository,
     );
+
   }
 
 
   obtenerTablet(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.obtener(
       this.tabletRepository,
       id,
       'Tablet',
     );
+
   }
 
 
   actualizarTablet(
-    id: number,
+    id:
+      number,
+
     dto:
       UpdateTabletDto,
   ) {
+
     return this.actualizar(
       this.tabletRepository,
       id,
       dto,
       'Tablet',
     );
+
   }
 
 
   eliminarTablet(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.eliminar(
       this.tabletRepository,
       id,
       'Tablet',
     );
+
   }
 
 
@@ -969,53 +1302,67 @@ export class InventarioService {
     dto:
       CreateModemDto,
   ) {
+
     return this.crear(
       this.modemRepository,
       dto,
     );
+
   }
 
 
   listarModems() {
+
     return this.listar(
       this.modemRepository,
     );
+
   }
 
 
   obtenerModem(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.obtener(
       this.modemRepository,
       id,
       'Módem',
     );
+
   }
 
 
   actualizarModem(
-    id: number,
+    id:
+      number,
+
     dto:
       UpdateModemDto,
   ) {
+
     return this.actualizar(
       this.modemRepository,
       id,
       dto,
       'Módem',
     );
+
   }
 
 
   eliminarModem(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.eliminar(
       this.modemRepository,
       id,
       'Módem',
     );
+
   }
 
 
@@ -1027,53 +1374,67 @@ export class InventarioService {
     dto:
       CreateCelularDto,
   ) {
+
     return this.crear(
       this.celularRepository,
       dto,
     );
+
   }
 
 
   listarCelulares() {
+
     return this.listar(
       this.celularRepository,
     );
+
   }
 
 
   obtenerCelular(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.obtener(
       this.celularRepository,
       id,
       'Celular',
     );
+
   }
 
 
   actualizarCelular(
-    id: number,
+    id:
+      number,
+
     dto:
       UpdateCelularDto,
   ) {
+
     return this.actualizar(
       this.celularRepository,
       id,
       dto,
       'Celular',
     );
+
   }
 
 
   eliminarCelular(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.eliminar(
       this.celularRepository,
       id,
       'Celular',
     );
+
   }
 
 
@@ -1085,52 +1446,67 @@ export class InventarioService {
     dto:
       CreateChipDto,
   ) {
+
     return this.crear(
       this.chipRepository,
       dto,
     );
+
   }
 
 
   listarChips() {
+
     return this.listar(
       this.chipRepository,
     );
+
   }
 
 
   obtenerChip(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.obtener(
       this.chipRepository,
       id,
       'Chip',
     );
+
   }
 
 
   actualizarChip(
-    id: number,
+    id:
+      number,
+
     dto:
       UpdateChipDto,
   ) {
+
     return this.actualizar(
       this.chipRepository,
       id,
       dto,
       'Chip',
     );
+
   }
 
 
   eliminarChip(
-    id: number,
+    id:
+      number,
   ) {
+
     return this.eliminar(
       this.chipRepository,
       id,
       'Chip',
     );
+
   }
+
 }

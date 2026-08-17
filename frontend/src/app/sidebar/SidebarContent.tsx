@@ -101,6 +101,21 @@ const menuItems:
 
     {
         label:
+            "Licencias Office",
+
+        shortLabel:
+            "LO",
+
+        path:
+            "/licencias-office",
+
+        roles: [
+            "Administrador",
+        ],
+    },
+
+    {
+        label:
             "IP",
 
         shortLabel:
@@ -333,9 +348,11 @@ export function SidebarContent({
 
 
                 {!collapsed && (
+
                     <span>
                         Cerrar sesión
                     </span>
+
                 )}
 
             </button>

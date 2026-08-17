@@ -20,12 +20,24 @@ import {
 } from './auth/auth.module';
 
 import {
+  CorreosModule,
+} from './correos/correos.module';
+
+import {
   ImpresorasModule,
 } from './impresoras/impresoras.module';
 
 import {
   InventarioModule,
 } from './inventario/inventario.module';
+
+import {
+  IpsModule,
+} from './ips/ips.module';
+
+import {
+  LicenciasOfficeModule,
+} from './licencias-office/licencias-office.module';
 
 import {
   UsuariosModule,
@@ -35,9 +47,6 @@ import {
   VpnModule,
 } from './vpn/vpn.module';
 
-import {
-  IpsModule,
-} from './ips/ips.module';
 
 @Module({
   imports: [
@@ -115,7 +124,7 @@ import {
     InventarioModule,
 
     UsuariosModule,
-    
+
     VpnModule,
 
     AreasModule,
@@ -123,6 +132,11 @@ import {
     ImpresorasModule,
 
     IpsModule,
+
+    LicenciasOfficeModule,
+
+    CorreosModule,
+
   ],
 })
 export class AppModule {}

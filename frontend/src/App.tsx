@@ -24,24 +24,16 @@ import {
 } from "@/auth";
 
 import Dashboard from "@/pages/Dashboard/Dashboard";
-
 import Inventario from "@/pages/Inventario/Inventario";
-
 import Impresoras from "@/pages/Impresoras/Impresoras";
-
 import Vpn from "@/pages/Vpn/Vpn";
-
 import Ips from "@/pages/Ips/Ips";
-
+import Correos from "@/pages/Correos/Correos";
+import LicenciasOffice from "@/pages/LicenciasOffice/LicenciasOffice";
 import Login from "@/pages/Login/Login";
-
 import RecuperarPassword from "@/pages/RecuperarPassword/RecuperarPassword";
-
 import RestablecerPassword from "@/pages/RestablecerPassword/RestablecerPassword";
-
 import Usuarios from "@/pages/Usuarios/Usuarios";
-
-
 
 
 type ModuloTemporalProps = {
@@ -149,10 +141,6 @@ function App() {
         useAuth();
 
 
-    /* =====================================================
-       VALIDANDO SESIÓN
-       ===================================================== */
-
     if (
         cargando
     ) {
@@ -184,10 +172,6 @@ function App() {
 
     }
 
-
-    /* =====================================================
-       NO AUTENTICADO
-       ===================================================== */
 
     if (
         !usuario
@@ -242,10 +226,6 @@ function App() {
     }
 
 
-    /* =====================================================
-       USUARIO AUTENTICADO
-       ===================================================== */
-
     const esAdministrador =
         usuario.rol ===
         "Administrador";
@@ -268,10 +248,6 @@ function App() {
         >
 
             <Routes>
-
-                {/* =====================================
-                    INICIO
-                    ===================================== */}
 
                 <Route
                     path="/"
@@ -303,10 +279,6 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    RECUPERACIÓN DE CONTRASEÑA
-                    ===================================== */}
-
                 <Route
                     path="/recuperar-password"
 
@@ -325,9 +297,7 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    DASHBOARD
-                    ===================================== */}
+                {/* DASHBOARD */}
 
                 <Route
                     path="/dashboard"
@@ -338,9 +308,7 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    INVENTARIO
-                    ===================================== */}
+                {/* INVENTARIO */}
 
                 <Route
                     path="/inventario"
@@ -351,37 +319,30 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    VPN
-                    ===================================== */}
+                {/* IMPRESORAS */}
 
                 <Route
-    path="/vpn"
+                    path="/impresoras"
 
-    element={
-        <Vpn />
-    }
-/>
+                    element={
+                        <Impresoras />
+                    }
+                />
 
 
-                {/* =====================================
-                    CORREOS
-                    ===================================== */}
+                {/* VPN */}
 
                 <Route
-                    path="/correos"
+                    path="/vpn"
 
                     element={
                         esAdministrador
                             ? (
-                                <ModuloTemporal
-                                    title="Correos"
-                                    description="Gestión de cuentas de correo"
-                                />
+                                <Vpn />
                             )
                             : (
                                 <Navigate
-                                    to="/inventario"
+                                    to="/dashboard"
                                     replace
                                 />
                             )
@@ -389,34 +350,67 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    IP
-                    ===================================== */}
+                {/* IP */}
 
                 <Route
-    path="/ip"
-    element={
-        <Ips />
-    }
-/>
+                    path="/ip"
+
+                    element={
+                        esAdministrador
+                            ? (
+                                <Ips />
+                            )
+                            : (
+                                <Navigate
+                                    to="/dashboard"
+                                    replace
+                                />
+                            )
+                    }
+                />
 
 
-                {/* =====================================
-    IMPRESORAS
-    ===================================== */}
+                {/* CORREOS */}
 
-<Route
-    path="/impresoras"
+                <Route
+                    path="/correos"
 
-    element={
-        <Impresoras />
-    }
-/>
+                    element={
+                        esAdministrador
+                            ? (
+                                <Correos />
+                            )
+                            : (
+                                <Navigate
+                                    to="/dashboard"
+                                    replace
+                                />
+                            )
+                    }
+                />
 
 
-                {/* =====================================
-                    SERVIDORES
-                    ===================================== */}
+                {/* LICENCIAS OFFICE */}
+
+                <Route
+                    path="/licencias-office"
+
+                    element={
+                        esAdministrador
+                            ? (
+                                <LicenciasOffice />
+                            )
+                            : (
+                                <Navigate
+                                    to="/dashboard"
+                                    replace
+                                />
+                            )
+                    }
+                />
+
+
+                {/* SERVIDORES */}
 
                 <Route
                     path="/servidores"
@@ -431,7 +425,7 @@ function App() {
                             )
                             : (
                                 <Navigate
-                                    to="/inventario"
+                                    to="/dashboard"
                                     replace
                                 />
                             )
@@ -439,9 +433,7 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    SWITCH
-                    ===================================== */}
+                {/* SWITCH */}
 
                 <Route
                     path="/switch"
@@ -456,7 +448,7 @@ function App() {
                             )
                             : (
                                 <Navigate
-                                    to="/inventario"
+                                    to="/dashboard"
                                     replace
                                 />
                             )
@@ -464,9 +456,7 @@ function App() {
                 />
 
 
-                {/* =====================================
-                    USUARIOS
-                    ===================================== */}
+                {/* USUARIOS */}
 
                 <Route
                     path="/usuarios"
@@ -478,17 +468,13 @@ function App() {
                             )
                             : (
                                 <Navigate
-                                    to="/inventario"
+                                    to="/dashboard"
                                     replace
                                 />
                             )
                     }
                 />
 
-
-                {/* =====================================
-                    RUTA NO ENCONTRADA
-                    ===================================== */}
 
                 <Route
                     path="*"

@@ -49,13 +49,101 @@ export class VpnController {
 
 
   /* =====================================================
-     CONSULTA
+     RESUMEN DASHBOARD
      ADMINISTRADOR + CONSULTOR
+
+     Devuelve únicamente indicadores agregados.
+     No expone registros individuales VPN.
      ===================================================== */
 
   @Roles(
     RolUsuario.ADMINISTRADOR,
     RolUsuario.CONSULTOR,
+  )
+  @Get('resumen')
+  async resumen() {
+
+    const registros =
+      await this.service.listar();
+
+
+    return {
+
+      total:
+        registros.length,
+
+
+      asignados:
+        registros.filter(
+          (
+            item,
+          ) =>
+            item.estado ===
+            'Asignado',
+        ).length,
+
+
+      reserva:
+        registros.filter(
+          (
+            item,
+          ) =>
+            item.estado ===
+            'Reserva',
+        ).length,
+
+
+      fortiActivos:
+        registros.filter(
+          (
+            item,
+          ) =>
+            item.forti ===
+            'Activo',
+        ).length,
+
+
+      fortiDesactivados:
+        registros.filter(
+          (
+            item,
+          ) =>
+            item.forti ===
+            'Desactivado',
+        ).length,
+
+
+      tipoForti:
+        registros.filter(
+          (
+            item,
+          ) =>
+            item.tipoVpn ===
+            'Forti',
+        ).length,
+
+
+      tipoWeb:
+        registros.filter(
+          (
+            item,
+          ) =>
+            item.tipoVpn ===
+            'WEB',
+        ).length,
+
+    };
+
+  }
+
+
+  /* =====================================================
+     LISTAR VPN
+     SOLO ADMINISTRADOR
+     ===================================================== */
+
+  @Roles(
+    RolUsuario.ADMINISTRADOR,
   )
   @Get()
   listar() {
@@ -65,9 +153,13 @@ export class VpnController {
   }
 
 
+  /* =====================================================
+     OBTENER VPN
+     SOLO ADMINISTRADOR
+     ===================================================== */
+
   @Roles(
     RolUsuario.ADMINISTRADOR,
-    RolUsuario.CONSULTOR,
   )
   @Get(':id')
   obtener(
@@ -161,4 +253,5 @@ export class VpnController {
     );
 
   }
+
 }

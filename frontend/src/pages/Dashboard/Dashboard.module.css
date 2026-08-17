@@ -7,14 +7,14 @@
 
     grid-template-columns:
         repeat(
-            4,
+            5,
             minmax(
                 0,
                 1fr
             )
         );
 
-    gap: 24px;
+    gap: 20px;
 
     margin-top: 32px;
 }
@@ -490,7 +490,7 @@
 
 
 /* =========================================================
-   BARRAS
+   BARRAS GENERALES
    ========================================================= */
 
 .barList {
@@ -584,7 +584,12 @@
 .categoryBar,
 .stateBar,
 .areaBar,
-.ipBar {
+.ipBar,
+.correosProgressBar,
+.licenciasProgressBar,
+.chipDataBar,
+.chipVoiceBar,
+.chipAreaBar {
     height:
         100%;
 
@@ -651,7 +656,555 @@
 
 
 /* =========================================================
-   CHIPS
+   CHIPS - CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.chipDashboardCard {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.chipDashboardCard::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    right:
+        0;
+
+    left:
+        0;
+
+    height:
+        4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #059669,
+            #14b8a6
+        );
+}
+
+
+/* =========================================================
+   CHIPS - MÉTRICAS PRINCIPALES
+   ========================================================= */
+
+.chipMainMetrics {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        12px;
+}
+
+
+.chipMainMetric {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    min-width:
+        0;
+
+    padding:
+        17px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        13px;
+
+    background:
+        #f8fafc;
+
+    transition:
+        transform
+        0.18s ease,
+        box-shadow
+        0.18s ease;
+}
+
+
+.chipMainMetric:hover {
+    transform:
+        translateY(
+            -1px
+        );
+
+    box-shadow:
+        0 6px 15px
+        rgba(
+            15,
+            23,
+            42,
+            0.06
+        );
+}
+
+
+.chipMainMetric::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        4px;
+
+    background:
+        #64748b;
+}
+
+
+.chipMainMetric span {
+    color:
+        #64748b;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.035em;
+}
+
+
+.chipMainMetric strong {
+    display:
+        block;
+
+    margin-top:
+        7px;
+
+    color:
+        #0f172a;
+
+    font-size:
+        28px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+}
+
+
+.chipMainMetric small {
+    display:
+        block;
+
+    margin-top:
+        8px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.4;
+}
+
+
+.chipMetricTotal {
+    background:
+        #f8fafc;
+}
+
+
+.chipMetricTotal::before {
+    background:
+        #334155;
+}
+
+
+.chipMetricAssigned {
+    border-color:
+        #bbf7d0;
+
+    background:
+        #f0fdf4;
+}
+
+
+.chipMetricAssigned::before {
+    background:
+        #059669;
+}
+
+
+.chipMetricAssigned strong {
+    color:
+        #047857;
+}
+
+
+.chipMetricStock {
+    border-color:
+        #fde68a;
+
+    background:
+        #fffbeb;
+}
+
+
+.chipMetricStock::before {
+    background:
+        #d97706;
+}
+
+
+.chipMetricStock strong {
+    color:
+        #b45309;
+}
+
+
+/* =========================================================
+   CHIPS - SUBSECCIONES
+   ========================================================= */
+
+.chipSubsection {
+    margin-top:
+        20px;
+
+    padding-top:
+        18px;
+
+    border-top:
+        1px solid
+        #e2e8f0;
+}
+
+
+.chipSubsectionTitle {
+    margin-bottom:
+        12px;
+
+    color:
+        #475569;
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.035em;
+}
+
+
+/* =========================================================
+   CHIPS - ESTADO DE LÍNEAS
+   ========================================================= */
+
+.chipStatusGrid {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        12px;
+}
+
+
+.chipStatusIndicator {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+    padding:
+        15px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #f8fafc;
+}
+
+
+.chipStatusIndicator span {
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+.chipStatusIndicator strong {
+    color:
+        #0f172a;
+
+    font-size:
+        21px;
+
+    font-weight:
+        800;
+}
+
+
+.chipStatusActive {
+    border-color:
+        #bbf7d0;
+
+    background:
+        #f0fdf4;
+}
+
+
+.chipStatusActive strong {
+    color:
+        #15803d;
+}
+
+
+.chipStatusLow {
+    border-color:
+        #fecaca;
+
+    background:
+        #fef2f2;
+}
+
+
+.chipStatusLow strong {
+    color:
+        #b91c1c;
+}
+
+
+/* =========================================================
+   CHIPS - TIPO DE USO
+   ========================================================= */
+
+.chipDataBar {
+    background:
+        linear-gradient(
+            90deg,
+            #0284c7,
+            #38bdf8
+        );
+}
+
+
+.chipVoiceBar {
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #a78bfa
+        );
+}
+
+
+/* =========================================================
+   CHIPS - ÁREAS ASIGNADAS
+   ========================================================= */
+
+.chipAreaContainer {
+    margin-top:
+        20px;
+}
+
+
+.chipAreaCard {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    padding:
+        24px;
+}
+
+
+.chipAreaCard::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    right:
+        0;
+
+    left:
+        0;
+
+    height:
+        4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0f766e,
+            #2dd4bf
+        );
+}
+
+
+.chipAreaTotal {
+    flex:
+        0
+        0
+        auto;
+
+    min-width:
+        130px;
+
+    padding:
+        12px
+        16px;
+
+    border:
+        1px solid
+        #ccfbf1;
+
+    border-radius:
+        12px;
+
+    background:
+        #f0fdfa;
+
+    text-align:
+        right;
+}
+
+
+.chipAreaTotal span {
+    display:
+        block;
+
+    color:
+        #0f766e;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.035em;
+}
+
+
+.chipAreaTotal strong {
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    color:
+        #115e59;
+
+    font-size:
+        25px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+}
+
+
+.chipAreaBar {
+    background:
+        linear-gradient(
+            90deg,
+            #0f766e,
+            #2dd4bf
+        );
+}
+
+
+/* =========================================================
+   COMPATIBILIDAD CON VISTA ANTERIOR DE CHIPS
    ========================================================= */
 
 .chipGrid {
@@ -826,6 +1379,10 @@
 }
 
 
+/* =========================================================
+   VPN
+   ========================================================= */
+
 .vpnSection {
     border-top:
         4px solid
@@ -842,6 +1399,10 @@
 }
 
 
+/* =========================================================
+   IP
+   ========================================================= */
+
 .ipSection {
     border-top:
         4px solid
@@ -851,6 +1412,46 @@
         linear-gradient(
             180deg,
             #f7feff
+                0%,
+            #ffffff
+                150px
+        );
+}
+
+
+/* =========================================================
+   CORREOS
+   ========================================================= */
+
+.correosSection {
+    border-top:
+        4px solid
+        #ea580c;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffaf5
+                0%,
+            #ffffff
+                150px
+        );
+}
+
+
+/* =========================================================
+   LICENCIAS OFFICE
+   ========================================================= */
+
+.licenciasSection {
+    border-top:
+        4px solid
+        #4f46e5;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8f7ff
                 0%,
             #ffffff
                 150px
@@ -940,7 +1541,7 @@
 
 
 /* =========================================================
-   RESUMEN VPN / IP
+   RESÚMENES DE MÓDULOS
    ========================================================= */
 
 .moduleSummaryGrid {
@@ -1146,6 +1747,62 @@
 
 
 /* =========================================================
+   COLORES CORREOS
+   ========================================================= */
+
+.correosTotal::before {
+    background:
+        #ea580c;
+}
+
+
+.correosUsed::before {
+    background:
+        #059669;
+}
+
+
+.correosReserve::before {
+    background:
+        #d97706;
+}
+
+
+.correosPending::before {
+    background:
+        #dc2626;
+}
+
+
+/* =========================================================
+   COLORES LICENCIAS
+   ========================================================= */
+
+.licenciasTotal::before {
+    background:
+        #4f46e5;
+}
+
+
+.licenciasActive::before {
+    background:
+        #059669;
+}
+
+
+.licenciasInactive::before {
+    background:
+        #dc2626;
+}
+
+
+.licenciasPercent::before {
+    background:
+        #0891b2;
+}
+
+
+/* =========================================================
    DETALLE DE MÓDULOS
    ========================================================= */
 
@@ -1244,7 +1901,7 @@
 
 
 /* =========================================================
-   INDICADORES SIMPLES VPN
+   INDICADORES SIMPLES
    ========================================================= */
 
 .simpleIndicators {
@@ -1342,6 +1999,213 @@
 .simpleIndicatorDanger strong {
     color:
         #b91c1c;
+}
+
+
+/* =========================================================
+   PROGRESO CORREOS / LICENCIAS
+   ========================================================= */
+
+.progressBlock {
+    margin-top:
+        20px;
+
+    padding:
+        16px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #f8fafc;
+}
+
+
+.progressInfo {
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        16px;
+
+    margin-bottom:
+        10px;
+}
+
+
+.progressInfo span {
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        650;
+}
+
+
+.progressInfo strong {
+    color:
+        #0f172a;
+
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+}
+
+
+.correosProgressBar {
+    background:
+        linear-gradient(
+            90deg,
+            #ea580c,
+            #fb923c
+        );
+}
+
+
+.licenciasProgressBar {
+    background:
+        linear-gradient(
+            90deg,
+            #4f46e5,
+            #818cf8
+        );
+}
+
+
+/* =========================================================
+   LICENCIAS POR CATEGORÍA
+   ========================================================= */
+
+.licenseIndicators {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        14px;
+}
+
+
+.licenseIndicator {
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
+    min-width:
+        0;
+
+    padding:
+        18px;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:
+        12px;
+
+    background:
+        #ffffff;
+}
+
+
+.licenseIndicator::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    right:
+        0;
+
+    left:
+        0;
+
+    height:
+        4px;
+
+    background:
+        #94a3b8;
+}
+
+
+.licenseIndicator span {
+    color:
+        #64748b;
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+}
+
+
+.licenseIndicator strong {
+    color:
+        #0f172a;
+
+    font-size:
+        26px;
+
+    font-weight:
+        800;
+}
+
+
+.licenseBasic::before {
+    background:
+        #2563eb;
+}
+
+
+.licenseEnterprise::before {
+    background:
+        #7c3aed;
+}
+
+
+.licensePowerBi::before {
+    background:
+        #f59e0b;
 }
 
 
@@ -1447,10 +2311,28 @@
 
 @media (
     max-width:
+        1500px
+) {
+
+    .coreMetricsSection {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+}
+
+
+@media (
+    max-width:
         1280px
 ) {
 
-    .coreMetricsSection,
     .summaryGrid,
     .moduleSummaryGrid {
         grid-template-columns:
@@ -1487,6 +2369,68 @@
             );
     }
 
+
+    .licenseIndicators {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .chipMainMetrics {
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+}
+
+
+@media (
+    max-width:
+        1000px
+) {
+
+    .coreMetricsSection {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .chipMainMetrics {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    0,
+                    1fr
+                )
+            );
+    }
+
+
+    .chipMainMetric:first-child {
+        grid-column:
+            1 /
+            -1;
+    }
+
 }
 
 
@@ -1514,6 +2458,18 @@
             );
     }
 
+
+    .licenseIndicators {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .chipAreaTotal {
+        min-width:
+            110px;
+    }
+
 }
 
 
@@ -1529,9 +2485,18 @@
     .chipSummary,
     .moduleSummaryGrid,
     .ipSummaryGrid,
-    .simpleIndicators {
+    .simpleIndicators,
+    .licenseIndicators,
+    .chipMainMetrics,
+    .chipStatusGrid {
         grid-template-columns:
             1fr;
+    }
+
+
+    .chipMainMetric:first-child {
+        grid-column:
+            auto;
     }
 
 
@@ -1555,6 +2520,45 @@
 
 
     .moduleSection {
+        padding:
+            18px;
+    }
+
+
+    .progressInfo {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap:
+            6px;
+    }
+
+
+    .chartHeader {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .chipAreaTotal {
+        width:
+            100%;
+
+        box-sizing:
+            border-box;
+
+        text-align:
+            left;
+    }
+
+
+    .chipAreaCard {
         padding:
             18px;
     }

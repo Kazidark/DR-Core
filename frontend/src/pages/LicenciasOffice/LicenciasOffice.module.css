@@ -1,0 +1,1245 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 100%;
+    min-width: 0;
+
+    height: calc(100dvh - 102px);
+    min-height: 0;
+
+    overflow: hidden;
+
+    --module-color: #2563eb;
+    --module-color-dark: #1d4ed8;
+    --module-color-soft: #eff6ff;
+    --module-color-border: #bfdbfe;
+    --module-color-shadow: rgba(37, 99, 235, 0.18);
+}
+
+
+/* ==========================================================
+   OFFICE BÁSICO
+   ========================================================== */
+
+.page[data-category="basico"] {
+    --module-color: #2563eb;
+    --module-color-dark: #1d4ed8;
+    --module-color-soft: #eff6ff;
+    --module-color-border: #bfdbfe;
+    --module-color-shadow: rgba(37, 99, 235, 0.18);
+}
+
+
+/* ==========================================================
+   OFFICE EMPRESARIAL
+   ========================================================== */
+
+.page[data-category="empresarial"] {
+    --module-color: #7c3aed;
+    --module-color-dark: #6d28d9;
+    --module-color-soft: #f5f3ff;
+    --module-color-border: #ddd6fe;
+    --module-color-shadow: rgba(124, 58, 237, 0.18);
+}
+
+
+/* ==========================================================
+   POWER BI
+   ========================================================== */
+
+.page[data-category="powerbi"] {
+    --module-color: #d97706;
+    --module-color-dark: #b45309;
+    --module-color-soft: #fffbeb;
+    --module-color-border: #fde68a;
+    --module-color-shadow: rgba(217, 119, 6, 0.18);
+}
+
+
+/* ==========================================================
+   TABS
+   ========================================================== */
+
+.tabs {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(160px, 1fr)
+        );
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 8px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #f1f5f9 100%
+        );
+}
+
+
+.tab,
+.tabActive {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 16px;
+
+    border: 1px solid transparent;
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    font-size: 0.84rem;
+    font-weight: 650;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.tab {
+    background: rgba(255, 255, 255, 0.55);
+
+    color: #64748b;
+}
+
+
+.tab:hover {
+    transform: translateY(-1px);
+
+    background: #ffffff;
+
+    color: #334155;
+
+    box-shadow:
+        0 4px 12px
+        rgba(15, 23, 42, 0.07);
+}
+
+
+.tabs button:nth-child(1).tabActive {
+    border-color: #93c5fd;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #eff6ff
+        );
+
+    color: #1d4ed8;
+
+    box-shadow:
+        0 4px 14px
+        rgba(37, 99, 235, 0.18);
+}
+
+
+.tabs button:nth-child(2).tabActive {
+    border-color: #c4b5fd;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ede9fe,
+            #f5f3ff
+        );
+
+    color: #6d28d9;
+
+    box-shadow:
+        0 4px 14px
+        rgba(124, 58, 237, 0.18);
+}
+
+
+.tabs button:nth-child(3).tabActive {
+    border-color: #fcd34d;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fef3c7,
+            #fffbeb
+        );
+
+    color: #b45309;
+
+    box-shadow:
+        0 4px 14px
+        rgba(217, 119, 6, 0.18);
+}
+
+
+.tabActive::after {
+    content: "";
+
+    position: absolute;
+
+    right: 20%;
+    bottom: 5px;
+    left: 20%;
+
+    height: 3px;
+
+    border-radius: 999px;
+
+    background: currentColor;
+}
+
+
+/* ==========================================================
+   TOOLBAR
+   ========================================================== */
+
+.toolbar {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #e6ebf1;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 8px
+        rgba(15, 23, 42, 0.03);
+}
+
+
+.searchContainer {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.search {
+    width: min(760px, 100%);
+
+    min-height: 44px;
+
+    box-sizing: border-box;
+
+    padding: 0 15px;
+
+    border: 1px solid #dbe3ec;
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    outline: none;
+
+    font-size: 0.86rem;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.search:hover {
+    background: #ffffff;
+}
+
+
+.search:focus {
+    border-color: var(--module-color);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px
+        var(--module-color-shadow);
+}
+
+
+.search::placeholder {
+    color: #94a3b8;
+}
+
+
+.toolbarActions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+}
+
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+
+.primaryButton,
+.secondaryButton,
+.editButton {
+    min-height: 44px;
+
+    padding: 0 19px;
+
+    border-radius: 10px;
+
+    font-size: 0.82rem;
+    font-weight: 650;
+
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+
+.primaryButton {
+    border: 1px solid var(--module-color);
+
+    background: var(--module-color);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 10px
+        var(--module-color-shadow);
+}
+
+
+.primaryButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    border-color: var(--module-color-dark);
+
+    background: var(--module-color-dark);
+
+    box-shadow:
+        0 6px 14px
+        var(--module-color-shadow);
+}
+
+
+.primaryButton:disabled {
+    opacity: 0.45;
+
+    box-shadow: none;
+
+    cursor: not-allowed;
+}
+
+
+.editButton {
+    border:
+        1px solid
+        var(--module-color-border);
+
+    background:
+        var(--module-color-soft);
+
+    color:
+        var(--module-color);
+
+    cursor: pointer;
+}
+
+
+.editButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    border-color:
+        var(--module-color);
+
+    color:
+        var(--module-color-dark);
+
+    box-shadow:
+        0 4px 10px
+        var(--module-color-shadow);
+}
+
+
+.editButton:disabled {
+    border-color: #e2e8f0;
+
+    background: #f8fafc;
+
+    color: #94a3b8;
+
+    box-shadow: none;
+
+    cursor: not-allowed;
+}
+
+
+.secondaryButton {
+    border: 1px solid #e2e8f0;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    cursor: pointer;
+}
+
+
+.secondaryButton:hover {
+    border-color: #cbd5e1;
+
+    background: #f8fafc;
+}
+
+
+/* ==========================================================
+   EXCEL
+   ========================================================== */
+
+.fileInput {
+    display: none;
+}
+
+
+.excelImportButton,
+.excelExportButton {
+    min-height: 44px;
+
+    padding: 0 17px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    transition:
+        all 0.18s ease;
+}
+
+
+.excelImportButton {
+    border: 1px solid #86efac;
+
+    background: #f0fdf4;
+
+    color: #15803d;
+}
+
+
+.excelImportButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    border-color: #22c55e;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    box-shadow:
+        0 4px 10px
+        rgba(34, 197, 94, 0.16);
+}
+
+
+.excelExportButton {
+    border: 1px solid #15803d;
+
+    background:
+        linear-gradient(
+            135deg,
+            #15803d,
+            #16a34a
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 10px
+        rgba(21, 128, 61, 0.18);
+}
+
+
+.excelExportButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+
+    border-color: #166534;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #15803d
+        );
+
+    box-shadow:
+        0 6px 14px
+        rgba(21, 128, 61, 0.22);
+}
+
+
+.excelImportButton:disabled,
+.excelExportButton:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ==========================================================
+   FEEDBACK EXCEL
+   ========================================================== */
+
+.excelFeedback {
+    padding: 13px 15px;
+
+    border: 1px solid;
+
+    border-radius: 12px;
+
+    font-size: 0.8rem;
+
+    box-shadow:
+        0 3px 10px
+        rgba(15, 23, 42, 0.035);
+}
+
+
+.excelFeedbackSuccess {
+    border-color: #bbf7d0;
+
+    background: #f0fdf4;
+
+    color: #166534;
+}
+
+
+.excelFeedbackWarning {
+    border-color: #fde68a;
+
+    background: #fffbeb;
+
+    color: #92400e;
+}
+
+
+.excelFeedbackError {
+    border-color: #fecaca;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+}
+
+
+.excelFeedbackHeader {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 14px;
+}
+
+
+.excelFeedbackClose {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: currentColor;
+
+    cursor: pointer;
+
+    font-size: 1.15rem;
+}
+
+
+.excelFeedbackClose:hover {
+    background:
+        rgba(15, 23, 42, 0.06);
+}
+
+
+.excelFeedbackDetails {
+    display: grid;
+
+    gap: 4px;
+
+    margin: 10px 0 0;
+
+    padding-left: 20px;
+}
+
+
+/* ==========================================================
+   ERROR
+   ========================================================== */
+
+.error {
+    padding: 13px 15px;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 11px;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+
+    font-size: 0.84rem;
+}
+
+
+/* ==========================================================
+   FORMULARIO
+   ========================================================== */
+
+.formHeader {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+}
+
+
+.formDescription {
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-size: 0.8rem;
+}
+
+
+.form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 18px;
+}
+
+
+.field {
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 7px;
+
+    color: #475569;
+
+    font-size: 0.79rem;
+    font-weight: 600;
+}
+
+
+.field > span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.field input,
+.field select {
+    width: 100%;
+
+    min-height: 43px;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #0f172a;
+
+    outline: none;
+
+    font-size: 0.84rem;
+}
+
+
+.field input:focus,
+.field select:focus {
+    border-color:
+        var(--module-color);
+
+    box-shadow:
+        0 0 0 3px
+        var(--module-color-shadow);
+}
+
+
+.field input:disabled,
+.field select:disabled {
+    border-color: #e2e8f0;
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+    cursor: not-allowed;
+}
+
+
+.uniqueBadge {
+    display: inline-flex;
+
+    padding: 2px 6px;
+
+    border-radius: 999px;
+
+    background:
+        var(--module-color-soft);
+
+    color:
+        var(--module-color);
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+.formActions {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding-top: 8px;
+}
+
+
+/* ==========================================================
+   ESTADOS
+   ========================================================== */
+
+.statusActive,
+.statusInactive {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 92px;
+
+    min-height: 27px;
+
+    padding: 0 10px;
+
+    border-radius: 999px;
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+}
+
+
+.statusActive {
+    border: 1px solid #86efac;
+
+    background: #f0fdf4;
+
+    color: #15803d;
+}
+
+
+.statusInactive {
+    border: 1px solid #fecaca;
+
+    background: #fef2f2;
+
+    color: #b91c1c;
+}
+
+
+/* ==========================================================
+   TABLA
+   ========================================================== */
+
+.tableSection {
+    position: relative;
+
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--module-color-border);
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 12px 30px
+        rgba(15, 23, 42, 0.065);
+}
+
+
+.tableSection::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    z-index: 2;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--module-color),
+            var(--module-color-border)
+        );
+}
+
+
+.tableHeader {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    min-height: 78px;
+
+    padding: 18px 22px 15px;
+
+    border-bottom:
+        1px solid #e7edf3;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--module-color-soft) 0%,
+            #ffffff 58%
+        );
+}
+
+
+.tableTitleGroup {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.clearSortButton {
+    min-height: 35px;
+
+    padding: 0 13px;
+
+    border:
+        1px solid
+        var(--module-color-border);
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color:
+        var(--module-color-dark);
+
+    cursor: pointer;
+
+    font-size: 0.74rem;
+    font-weight: 650;
+}
+
+
+.clearSortButton:hover {
+    border-color:
+        var(--module-color);
+
+    background:
+        var(--module-color-soft);
+
+    color:
+        var(--module-color);
+}
+
+
+.dataGridViewport {
+    flex: 1 1 auto;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    height: 0;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fbfcfe
+        );
+}
+
+
+.dataGrid {
+    width: 100%;
+
+    border: none !important;
+
+    border-radius: 0 !important;
+
+    background: transparent;
+
+    color: #334155;
+
+    font-family: inherit !important;
+
+    font-size: 0.81rem;
+}
+
+
+.dataGrid :global(.MuiDataGrid-columnHeaders) {
+    border-bottom:
+        1px solid
+        var(--module-color-border) !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--module-color-soft),
+            #f8fafc
+        ) !important;
+
+    box-shadow:
+        0 3px 10px
+        rgba(15, 23, 42, 0.055);
+}
+
+
+.dataGrid :global(.MuiDataGrid-columnHeader) {
+    background:
+        linear-gradient(
+            180deg,
+            var(--module-color-soft),
+            #f8fafc
+        ) !important;
+
+    color:
+        var(--module-color-dark);
+
+    font-size: 0.69rem;
+
+    font-weight: 750;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.035em;
+}
+
+
+.dataGrid :global(.MuiDataGrid-columnHeader:first-of-type) {
+    box-shadow:
+        inset
+        4px
+        0
+        0
+        var(--module-color);
+}
+
+
+.dataGrid :global(.MuiDataGrid-columnHeaderTitle) {
+    font-weight: 750 !important;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.dataGrid :global(.MuiDataGrid-columnSeparator) {
+    color:
+        var(--module-color-border) !important;
+}
+
+
+.dataGrid :global(.MuiDataGrid-sortIcon) {
+    color:
+        var(--module-color) !important;
+}
+
+
+.dataGrid :global(.MuiDataGrid-cell) {
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 16px !important;
+
+    border-bottom:
+        1px solid #edf1f5 !important;
+
+    border-right:
+        1px solid
+        rgba(226, 232, 240, 0.66) !important;
+
+    color: #334155;
+
+    outline: none !important;
+}
+
+
+.gridCellValue {
+    display: block;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.dataGrid :global(.MuiDataGrid-row) {
+    background: #ffffff;
+}
+
+
+.dataGrid :global(.MuiDataGrid-row:nth-of-type(even)) {
+    background: #fbfdff;
+}
+
+
+.dataGrid :global(.MuiDataGrid-row:hover) {
+    background:
+        var(--module-color-soft) !important;
+
+    box-shadow:
+        inset
+        3px
+        0
+        0
+        var(--module-color);
+}
+
+
+.dataGrid :global(.MuiDataGrid-row.Mui-selected) {
+    background:
+        var(--module-color-soft) !important;
+
+    box-shadow:
+        inset
+        5px
+        0
+        0
+        var(--module-color);
+}
+
+
+.dataGrid :global(.MuiDataGrid-row.Mui-selected:hover) {
+    background:
+        var(--module-color-soft) !important;
+}
+
+
+.dataGrid :global(.MuiDataGrid-overlay) {
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
+
+    color: #94a3b8;
+}
+
+
+.dataGrid :global(.MuiDataGrid-footerContainer) {
+    min-height: 50px !important;
+
+    border-top:
+        1px solid #e5eaf0 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fafc
+        );
+}
+
+
+.dataGrid
+:global(.MuiTablePagination-actions button) {
+    color:
+        var(--module-color);
+}
+
+
+.dataGrid
+:global(.MuiDataGrid-cell:focus),
+.dataGrid
+:global(.MuiDataGrid-columnHeader:focus) {
+    outline: none !important;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 1100px) {
+
+    .form {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .toolbar {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .toolbarActions {
+        width: 100%;
+    }
+
+
+    .toolbarActions button {
+        flex: 1;
+    }
+
+
+    .search {
+        width: 100%;
+    }
+
+
+    .tabs {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tableHeader {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 620px) {
+
+    .form {
+        grid-template-columns:
+            1fr;
+    }
+
+}
